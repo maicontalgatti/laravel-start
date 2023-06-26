@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AssistanceController;
 use App\Http\Controllers\ChirpController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,11 +20,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/assistance', [AssistanceController::class, 'index'])->name('assistance.index');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::resource('chirps', ChirpController::class)
+Route::resource('/chirps', ChirpController::class)
     ->only(['index', 'store', 'edit', 'update', 'destroy'])
     ->middleware(['auth', 'verified']);
 
