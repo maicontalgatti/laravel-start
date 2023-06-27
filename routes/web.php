@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AssistanceController;
+use App\Http\Controllers\RecordsController;
 use App\Http\Controllers\ChirpController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,8 @@ Route::get('/', function () {
 });
 
 Route::get('/assistance', [AssistanceController::class, 'index'])->name('assistance.index');
+
+Route::get('/records', [RecordsController::class, 'index'])->name('records.index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
