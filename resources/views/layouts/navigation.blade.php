@@ -37,16 +37,16 @@
                                 </x-slot>
 
                             <x-slot name="content">
-                                <x-dropdown-link :href="route('records/people')" :active="request()->routeIs('records.people.show')">
+                                <x-dropdown-link :href="route('records.people')" :active="request()->routeIs('people.showPeople')">
                                     {{ __('Pessoas') }}
                                 </x-dropdown-link>
-                                <x-dropdown-link :href="route('records/projects')" :active="request()->routeIs('records.projects.show')" >
+                                <x-dropdown-link :href="route('records.projects')" :active="request()->routeIs('projects.show')" >
                                     {{ __('Projetos') }}
                                 </x-dropdown-link>
-                                <x-dropdown-link :href="route('records/cars')" :active="request()->routeIs('records.cars.show')">
-                                    {{ __('Carros') }}
+                                <x-dropdown-link :href="route('records.vehicles')" :active="request()->routeIs('vehicles.show')">
+                                    {{ __('Veículos') }}
                                 </x-dropdown-link>
-                                <x-dropdown-link :href="route('records/clients')" :active="request()->routeIs('records.clients.show')" >
+                                <x-dropdown-link :href="route('records.clients')" :active="request()->routeIs('clients.show')" >
                                     {{ __('Clientes') }}
                                 </x-dropdown-link>
                             </x-slot>

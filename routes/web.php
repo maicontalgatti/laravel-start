@@ -25,6 +25,13 @@ Route::get('/assistance', [AssistanceController::class, 'index'])->name('assista
 
 Route::get('/records', [RecordsController::class, 'index'])->name('records.index');
 
+//rotas de views da records
+Route::get('/records/people', [RecordsController::class, 'people'])->name(name: 'records.people');
+Route::get('/records/projects', [RecordsController::class, 'projects'])->name('records.projects');
+Route::get('/records/vehicles', [RecordsController::class, 'vehicles'])->name('records.vehicles');
+Route::get('/records/clients', [RecordsController::class, 'clients'])->name('records.clients');
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
