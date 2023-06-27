@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('clientes', function (Blueprint $table) {
+        Schema::create('veiculos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome', 80);
-            $table->string('cidade', 80);
-            $table->string('estado', 80);
-            $table->string('telefone', 20);
+            $table->string('marca', 80);
+            $table->string('modelo', 80);
+            $table->string('placa', 10);
+            $table->integer('km_aquisicao');
+            $table->integer('km_atual');
+            $table->integer('per_troca_oleo_dias');
+            $table->integer('ultima_troca_oleo_km');
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('clientes');
+        Schema::dropIfExists('veiculos');
     }
 };
