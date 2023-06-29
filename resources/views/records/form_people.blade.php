@@ -15,7 +15,7 @@
                     </div>
                     <div class="w-full sm:w-auto px-4">
                         <div>
-                            <a class="inline-block py-2 px-4 mr-3 text-xs text-center font-semibold leading-normal text-gray-400 bg-gray-600 hover:bg-gray-700 rounded-lg transition duration-200" href="#">Cancelar</a>
+                            <!--<a class="inline-block py-2 px-4 mr-3 text-xs text-center font-semibold leading-normal text-gray-400 bg-gray-600 hover:bg-gray-700 rounded-lg transition duration-200" href="#">Cancelar</a>-->
                             <a class="inline-block py-2 px-4 text-xs text-center font-semibold leading-normal text-blue-50 bg-blue-500 hover:bg-blue-600 rounded-lg transition duration-200" href="#">Salvar</a></div>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
                         </div>
                         <div class="w-full sm:w-2/3 px-4">
                             <div class="max-w-xl">
-                                <input class=" block py-4 px-3 w-full text-sm dark:text-gray-300 text-gray-900 placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dar:hover:border-white focus:border-green-500 rounded-lg" id="formInput1-3" type="text" placeholder="Setor">
+                                <input class=" block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg" id="formInput1-3" type="text" placeholder="Setor">
                             </div>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                         </div>
                         <div class="w-full sm:w-2/3 px-4">
                             <div class="max-w-xl">
-                                <input class=" block py-4 px-3 w-full text-sm dark:text-gray-300 text-gray-900 placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dar:hover:border-white focus:border-green-500 rounded-lg" id="formInput1-3" type="text" placeholder="Função">
+                                <input class=" block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg" id="formInput1-3" type="text" placeholder="Função">
                             </div>
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                             <span class="text-xs text-black dark:text-gray-400">Digite aqui..</span>
                         </div>
                         <div class="w-full sm:w-2/3 px-4">
-                            <div class="max-w-xl"><textarea class="block h-56 py-4 px-3 w-full text-sm text-black dark:text-gray-100 placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-white focus:border-green-500 rounded-lg resize-none" id="formInput1-9" type="text" placeholder="Lorem ipsum dolor sit amet"></textarea></div>
+                            <div class="max-w-xl"><textarea class="block h-56 py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg resize-none" id="formInput1-9" type="text" placeholder="Lorem ipsum dolor sit amet"></textarea></div>
                         </div>
                     </div>
                 </form>
