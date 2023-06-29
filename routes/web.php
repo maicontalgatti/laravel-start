@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AssistanceController;
 use App\Http\Controllers\RecordsController;
 use App\Http\Controllers\ChirpController;
+use App\Http\Controllers\PeopleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,9 @@ Route::get('/records/people', [RecordsController::class, 'people'])->name(name: 
 Route::get('/records/projects', [RecordsController::class, 'projects'])->name('records.projects');
 Route::get('/records/vehicles', [RecordsController::class, 'vehicles'])->name('records.vehicles');
 Route::get('/records/clients', [RecordsController::class, 'clients'])->name('records.clients');
+
+//rotas das views de records ADD
+Route::get('/records/people/add', [PeopleController::class, 'show'])->name('people.show');
 
 
 Route::get('/dashboard', function () {

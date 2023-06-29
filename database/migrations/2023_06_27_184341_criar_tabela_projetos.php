@@ -15,14 +15,14 @@ return new class extends Migration
             $table->increments('id');
             $table->string('numero', 40);
             $table->string('nome', 80);
-            $table->foreign('id_cliente')->references('id')->on('clientes');
             $table->string('cidade', 80);
             $table->string('estado', 80);
+            $table->integer('id_cliente');
             $table->string('data_inicio_montagem_esperado', 80);
             $table->string('data_inicio_montagem_real', 80);
             $table->string('custo_montagem_esperado', 80);
             $table->string('custo_montagem_real', 80);
-
+            //$table->foreign('id_cliente')->references('id')->on('clientes');
             $table->timestamps();
         });
     }
