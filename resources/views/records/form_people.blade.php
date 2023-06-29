@@ -8,7 +8,9 @@
     <section class="py-3">
         <div class="container px-4 mx-auto">
             <div class="p-8 dark:bg-gray-800 bg-white rounded-xl">
-                <div class="flex flex-wrap items-center justify-between -mx-4 mb-8 pb-6 border-b border-gray-400 border-opacity-20">
+                <form method="post" action="{{route('people.store')}}">
+                    @csrf
+                    <div class="flex flex-wrap items-center justify-between -mx-4 mb-8 pb-6 border-b border-gray-400 border-opacity-20">
                     <div class="w-full sm:w-auto px-4 mb-6 sm:mb-0">
                         <h4 class="text-2xl font-bold tracking-wide dark:text-gray-300 text-gray-900 mb-1">Colaborador</h4>
                         <p class="text-sm dark:text-gray-300 text-gray-900">dados salvos após clicar em "salvar"</p>
@@ -19,7 +21,7 @@
                             <a class="inline-block py-2 px-4 text-xs text-center font-semibold leading-normal text-blue-50 bg-blue-500 hover:bg-blue-600 rounded-lg transition duration-200" href="#">Salvar</a></div>
                     </div>
                 </div>
-                <form action="">
+
                     <div class="flex flex-wrap items-center -mx-4 pb-8 mb-8 border-b border-gray-400 border-opacity-20">
                         <div class="w-full sm:w-1/3 px-4 mb-4 sm:mb-0">
                             <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Nome</span>

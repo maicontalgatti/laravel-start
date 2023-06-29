@@ -26,6 +26,8 @@ Route::get('/assistance', [AssistanceController::class, 'index'])->name('assista
 
 Route::get('/records', [RecordsController::class, 'index'])->name('records.index');
 
+
+
 //rotas de views da records
 Route::get('/records/people', [RecordsController::class, 'people'])->name(name: 'records.people');
 Route::get('/records/projects', [RecordsController::class, 'projects'])->name('records.projects');
@@ -33,7 +35,11 @@ Route::get('/records/vehicles', [RecordsController::class, 'vehicles'])->name('r
 Route::get('/records/clients', [RecordsController::class, 'clients'])->name('records.clients');
 
 //rotas das views de records ADD
-Route::get('/records/people/add', [PeopleController::class, 'show'])->name('people.add');
+Route::get('/records/people/add', [PeopleController::class, 'new'])->name('people.add');
+Route::post('/records/people/add', [PeopleController::class, 'store'])->name('people.store');
+
+
+
 
 
 Route::get('/dashboard', function () {
