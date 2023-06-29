@@ -33,7 +33,7 @@ Route::get('/records/vehicles', [RecordsController::class, 'vehicles'])->name('r
 Route::get('/records/clients', [RecordsController::class, 'clients'])->name('records.clients');
 
 //rotas das views de records ADD
-Route::get('/records/people/add', [PeopleController::class, 'show'])->name('people.show');
+Route::get('/records/people/add', [PeopleController::class, 'show'])->name('people.add');
 
 
 Route::get('/dashboard', function () {
