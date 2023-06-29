@@ -6,8 +6,7 @@
     </x-slot>
 
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-6">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-6">
     <section class="py-3">
         <div class="container px-4 mx-auto">
             <div class="p-8 dark:bg-gray-800 bg-white rounded-xl">
@@ -25,16 +24,16 @@
                 <form action="">
                     <div class="flex flex-wrap items-center -mx-4 pb-8 mb-8 border-b border-gray-400 border-opacity-20">
                         <div class="w-full sm:w-1/3 px-4 mb-4 sm:mb-0">
-                            <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Name</span>
+                            <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Name*</span>
                         </div>
                         <div class="w-full sm:w-2/3 px-4">
                             <div class="max-w-xl">
                                 <div class="flex flex-wrap items-center -mx-3">
                                     <div class="w-full sm:w-1/2 px-3 mb-3 sm:mb-0">
-                                        <input class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-gray-900 placeholder-gray-50 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg" id="formInput1-1" type="text" placeholder="John">
+                                        <input required class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg" id="formInput1-1" type="text" placeholder="John">
                                     </div>
                                     <div class="w-full sm:w-1/2 px-3">
-                                        <input class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-gray-900 placeholder-gray-50 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg" id="formInput1-2" type="text" placeholder="Doe">
+                                        <input required class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg" id="formInput1-2" type="text" placeholder="Doe">
                                     </div>
                                 </div>
                             </div>
@@ -46,13 +45,13 @@
                         </div>
                         <div class="w-full sm:w-2/3 px-4">
                             <div class="max-w-xl">
-                                <input class=" block py-4 px-3 w-full text-sm dark:text-gray-300 text-gray-900 placeholder-gray-50 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dar:hover:border-white focus:border-green-500 rounded-lg" id="formInput1-3" type="text" placeholder="johndoe@trizzle.ui">
+                                <input class=" block py-4 px-3 w-full text-sm dark:text-gray-300 text-gray-900 placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dar:hover:border-white focus:border-green-500 rounded-lg" id="formInput1-3" type="text" placeholder="johndoe@trizzle.ui">
                             </div>
                         </div>
                     </div>
                     <div class="flex flex-wrap items-start -mx-4 pb-8 mb-8 border-b border-gray-400 border-opacity-20">
                         <div class="w-full sm:w-1/3 px-4 mb-6 sm:mb-0">
-                            <span class="block text-sm font-medium text-gray-100">Photo</span>
+                            <span class="block text-sm font-medium dark:text-gray-300 text-gray-900">Photo</span>
                             <span class="text-xs text-gray-400">Lorem ipsum dolor sit amet</span>
                         </div>
                         <div class="w-full sm:w-2/3 px-4">
@@ -84,7 +83,7 @@
                         </div>
                         <div class="w-full sm:w-2/3 px-4">
                             <div class="max-w-xl">
-                                <div class="relative block px-3 w-full text-sm text-black dark:text-gray-100 placeholder-gray-50 font-medium border border-gray-400 hover:border-black dark:hover:border-white focus-within:border-green-500 rounded-lg">
+                                <div class="relative block px-3 w-full text-sm text-gray-600 dark:text-gray-100 placeholder-gray-600 font-medium border border-gray-400 hover:border-black dark:hover:border-white focus-within:border-green-500 rounded-lg">
                                     <select class="w-full py-4 bg-transparent focus:outline-none" id="formInput1-6" name="">
                                         <option class="bg-gray-500" value="1">United States</option>
                                         <option class="bg-gray-500" value="1">United States2</option>
@@ -102,7 +101,7 @@
                             <span class="text-xs text-black dark:text-gray-400">Lorem ipsum dolor sit amet</span>
                         </div>
                         <div class="w-full sm:w-2/3 px-4">
-                            <div class="max-w-xl"><textarea class="block h-56 py-4 px-3 w-full text-sm text-black dark:text-gray-100 placeholder-gray-50 font-medium outline-none bg-transparent border border-gray-400 hover:border-white focus:border-green-500 rounded-lg resize-none" id="formInput1-9" type="text" placeholder="Lorem ipsum dolor sit amet"></textarea></div>
+                            <div class="max-w-xl"><textarea class="block h-56 py-4 px-3 w-full text-sm text-black dark:text-gray-100 placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-white focus:border-green-500 rounded-lg resize-none" id="formInput1-9" type="text" placeholder="Lorem ipsum dolor sit amet"></textarea></div>
                         </div>
                     </div>
                 </form>
@@ -110,7 +109,6 @@
          </div>
             </section>
         </div>
-    </div>
 
 
 </x-app-layout>
