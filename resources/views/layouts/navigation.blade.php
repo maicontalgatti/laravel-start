@@ -19,9 +19,7 @@
                     <x-nav-link :href="route('assistance.index')" :active="request()->routeIs('assistance.index')">
                         {{ __('Assistências') }}
                     </x-nav-link>
-                    <!--<x-nav-link :href="route('records.index')" :active="request()->routeIs('records.index')">
-                        {{ __('Cadastros') }}
-                    </x-nav-link>-->
+
                     <!-- init -->
                     <div class="hidden sm:flex sm:items-center sm:ml-6" >
                         <x-dropdown align="right" width="48" >
@@ -52,6 +50,10 @@
                             </x-slot>
                         </x-nav-link>
                     </div>
+
+
+
+
                     <!--finish -->
                 </div>
             </div>
