@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pessoa;
 use Illuminate\Http\Request;
 
 class PeopleController extends Controller
@@ -27,7 +28,8 @@ class PeopleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->only(['nome', 'funcao', 'setor', 'observacao']); 
+       Pessoa::createPessoa($data);
     }
 
     /**
