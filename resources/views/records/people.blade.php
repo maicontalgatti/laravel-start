@@ -21,18 +21,34 @@
                         </a>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" style="margin-top: 10px">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("Menu de cadastros de pessoas!") }}
+                <div class="p-6 text-gray-900 dark:text-gray-100 dark:bg-gray-700 bg-gray-100 rounded-lg">
+                    <div class="flex ">
+                        <div class="w-1/4 ">Nome</div>
+                        <div class="w-1/4 ">Setor</div>
+                        <div class="w-1/4 ">Função</div>
+                        <div class="w-1/4 ">Observação</div>
+                    </div>
                 </div>
             </div>
         </div>
 
-
+                @foreach($pessoas as $pessoa)
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" style="margin-top: 5px">
+                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6 text-gray-900 dark:text-gray-100">
+                                    <div class="flex ">
+                                        <div class="w-1/4">{{$pessoa->nome}}</div>
+                                        <div class="w-1/4">{{$pessoa->setor}}</div>
+                                        <div class="w-1/4">{{$pessoa->funcao}}</div>
+                                        <div class="w-1/4">{{$pessoa->observacao}}</div>
+                                    </div>
+                                    <!--<div class="p-6 text-gray-900 dark:text-gray-100">
+                                    </div>-->
+                    </div>
+                </div>
+            </div>
+                 @endforeach
 
     </div>
 </x-app-layout>

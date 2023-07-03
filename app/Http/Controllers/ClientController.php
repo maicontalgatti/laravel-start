@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
 use Illuminate\Http\Request;
 
-class PeopleController extends Controller
+class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,15 +28,21 @@ class PeopleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->only(['nome', 'funcao', 'setor', 'observacao']);
+        Client::createClient($data);
     }
 
+    public function new()
+    {
+        return view('records.form_client');
+
+    }
     /**
      * Display the specified resource.
      */
-    public function show()
+    public function show(string $id)
     {
-        return view('records.form_people');
+        //
     }
 
     /**

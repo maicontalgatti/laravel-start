@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pessoa;
 use Illuminate\Http\Request;
 
-class PeopleController extends Controller
+class ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -28,21 +27,16 @@ class PeopleController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->only(['nome', 'funcao', 'setor', 'observacao']);
-        Pessoa::createPessoa($data);
+        //
     }
 
     /**
      * Display the specified resource.
      */
-    public function new()
+    public function show(string $id)
     {
-        return view('records.form_people');
-
+        //
     }
-    /**
-     * Display the specified resource.
-     */
 
     /**
      * Show the form for editing the specified resource.
@@ -67,4 +61,12 @@ class PeopleController extends Controller
     {
         //
     }
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function new()
+    {
+        return view('records.form_project');
+    }
+
 }

@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AssistanceController;
 use App\Http\Controllers\RecordsController;
 use App\Http\Controllers\ChirpController;
 use App\Http\Controllers\PeopleController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,12 +36,18 @@ Route::get('/records/projects', [RecordsController::class, 'projects'])->name('r
 Route::get('/records/vehicles', [RecordsController::class, 'vehicles'])->name('records.vehicles');
 Route::get('/records/clients', [RecordsController::class, 'clients'])->name('records.clients');
 
-//rotas das views de records ADD
+//rotas das views de records ADD PESSOAS
 Route::get('/records/people/add', [PeopleController::class, 'new'])->name('people.add');
 Route::post('/records/people/add', [PeopleController::class, 'store'])->name('people.store');
 
+//rotas das views de records ADD PROJETOS
+Route::get('/records/project/add', [ProjectController::class, 'new'])->name('project.add');
+//Route::post('/records/people/add', [PeopleController::class, 'store'])->name('people.store');
 
 
+//rotas das views de records ADD CLIENTES
+Route::get('/records/client/add', [ClientController::class, 'new'])->name('client.add');
+Route::post('/records/client/add', [ClientController::class, 'store'])->name('client.store');
 
 
 Route::get('/dashboard', function () {

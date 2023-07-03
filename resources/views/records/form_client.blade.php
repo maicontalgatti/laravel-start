@@ -1,18 +1,18 @@
 <x-app-layout>
      <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Cadastros > Pessoas >Novo cadastro') }}
+            {{ __('Cadastros > Clientes >Novo cadastro') }}
         </h2>
     </x-slot>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-6">
     <section class="py-3">
         <div class="container px-4 mx-auto">
             <div class="p-8 dark:bg-gray-800 bg-white rounded-xl">
-                <form method="post" action="{{route('people.store')}}">
+                <form method="post" action="{{route('client.store')}}">
                     @csrf
                     <div class="flex flex-wrap items-center justify-between -mx-4 mb-8 pb-6 border-b border-gray-400 border-opacity-20">
                     <div class="w-full sm:w-auto px-4 mb-6 sm:mb-0">
-                        <h4 class="text-2xl font-bold tracking-wide dark:text-gray-300 text-gray-900 mb-1">Colaborador</h4>
+                        <h4 class="text-2xl font-bold tracking-wide dark:text-gray-300 text-gray-900 mb-1">Cliente</h4>
                         <p class="text-sm dark:text-gray-300 text-gray-900">dados salvos após clicar em "salvar"</p>
                     </div>
                     <div class="w-full sm:w-auto px-4">

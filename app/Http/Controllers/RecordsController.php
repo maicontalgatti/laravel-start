@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pessoa;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -12,10 +13,16 @@ class RecordsController extends Controller
         //return response('Hello, World!');
         return view('records.index');
     }
-    public function people():View
+    public function people()
     {
         //return response('Hello, World!');
-        return view('records.people');
+
+        $pessoas = Pessoa::all();
+
+        //return view('records.people');
+        return view('records.people', [
+            'pessoas' => $pessoas
+        ]);
     }
     public function projects():View
     {
