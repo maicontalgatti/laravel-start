@@ -52,7 +52,7 @@ Route::post('/records/client/add', [ClientController::class, 'store'])->name('cl
 
 //rotas das views de records ADD VEICULOS
 Route::get('/records/vehicle/add', [VehicleController::class, 'new'])->name('vehicle.add');
-Route::post('/records/vehicle/add', [VehicleController::class, 'store'])->name('vehiclevehicle.store');
+Route::post('/records/vehicle/add', [VehicleController::class, 'store'])->name('vehicle.store');
 
 
 Route::get('/dashboard', function () {
