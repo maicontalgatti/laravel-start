@@ -30,6 +30,7 @@ class VehicleController extends Controller
     {
         $data = $request->only(['marca', 'modelo', 'placa', 'km_aquisicao', 'km_atual', 'per_troca_oleo_km', 'ultima_troca_oleo_km']);
         Veiculo::createVehicle($data);
+        return redirect(route('records.vehicles'));
     }
 
 

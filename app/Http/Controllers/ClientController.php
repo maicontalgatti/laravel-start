@@ -31,6 +31,7 @@ class ClientController extends Controller
     {
         $data = $request->only(['nome', 'cidade', 'estado', 'telefone']);
         Cliente::createClient($data);
+        return redirect(route('records.clients'));
     }
 
     public function new()

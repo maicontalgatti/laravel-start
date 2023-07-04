@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\projeto;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -25,10 +26,7 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        //
-    }
+
 
     /**
      * Display the specified resource.
@@ -64,9 +62,16 @@ class ProjectController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+    public function store(Request $request)
+    {
+        $data = $request->only(['numero','nome','cidade','estado','id_cliente','data_inicio_montagem_esperado','data_inicio_montagem_real','custo_montagem_esperado','custo_montagem_real']);
+        Projeto::createProject($data);
+        return redirect(route('records.projects'));
+    }
+
     public function new()
     {
         return view('records.form_project');
-    }
 
+    }
 }

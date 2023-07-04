@@ -30,6 +30,7 @@ class PeopleController extends Controller
     {
         $data = $request->only(['nome', 'funcao', 'setor', 'observacao']);
         Pessoa::createPessoa($data);
+        return redirect(route('records.people'));
     }
 
     /**

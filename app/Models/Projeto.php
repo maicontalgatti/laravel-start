@@ -23,10 +23,7 @@ class projeto extends Model
     {
         return self::find($id);
     }
-    public static function createNew($data)
-    {
-        return self::create($data);
-    }
+
     public static function updateById($id, $data)
     {
         $registro = self::find($id);
@@ -38,5 +35,10 @@ class projeto extends Model
     {
         $registro = self::find($id);
         $registro->delete();
+    }
+
+    public static function createProject(array $data)
+    {
+        return self::create($data);
     }
 }
