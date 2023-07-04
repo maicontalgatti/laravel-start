@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\cliente;
 use App\Models\projeto;
 use Illuminate\Http\Request;
 
@@ -71,7 +72,14 @@ class ProjectController extends Controller
 
     public function new()
     {
-        return view('records.form_project');
+        //return view('records.form_project');
+        $clientes = Cliente::all();
+
+        //return view('records.people');
+        return view('records.form_project', [
+            'clientes' => $clientes
+        ]);
+
 
     }
 }

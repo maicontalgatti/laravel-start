@@ -33,7 +33,6 @@ class RecordsController extends Controller
         //return view('records.projects');
 
         $projetos = Projeto::all();
-
         //return view('records.people');
         return view('records.projects', [
             'projetos' => $projetos

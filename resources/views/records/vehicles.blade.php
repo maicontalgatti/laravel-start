@@ -24,11 +24,10 @@
 
                 <div class="p-6 text-gray-900 dark:text-gray-100 dark:bg-gray-700 bg-gray-100 rounded-lg">
                     <div class="flex ">
-                        <div class="w-1/5 ">marca</div>
-                        <div class="w-1/5 ">modelo</div>
-                        <div class="w-1/5 ">placa</div>
-                        <div class="w-1/5 ">km_atual</div>
-                        <div class="w-1/5 ">ultima_troca_oleo_km</div>
+                        <div class="w-2/5 ">Marca - Modelo</div>
+                        <div class="w-1/5 ">Placa</div>
+                        <div class="w-1/5 ">Quilometragem atual</div>
+                        <div class="w-1/5 ">Ultima troca de óleo</div>
                     </div>
                 </div>
             </div>
@@ -39,11 +38,10 @@
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900 dark:text-gray-100">
                         <div class="flex ">
-                            <div class="w-1/5">{{$veiculo->marca}}</div>
-                            <div class="w-1/5">{{$veiculo->modelo}}</div>
+                            <div class="w-2/5">{{$veiculo->marca}} {{$veiculo->modelo}}</div>
                             <div class="w-1/5">{{$veiculo->placa}}</div>
-                            <div class="w-1/5">{{$veiculo->km_atual}}</div>
-                            <div class="w-1/5">{{$veiculo->ultima_troca_oleo_km}}</div>
+                            <div class="w-1/5">Km {{$veiculo->km_atual}}</div>
+                            <div class="w-1/5">Km {{$veiculo->ultima_troca_oleo_km}}</div>
                         </div>
                         <!--<div class="p-6 text-gray-900 dark:text-gray-100">
                         </div>-->

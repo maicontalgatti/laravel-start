@@ -52,7 +52,11 @@
                             </div>
                             <div class="w-full sm:w-2/3 px-4">
                                 <div class="max-w-xl">
-                                    <input name="id_cliente" class=" block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg"   type="text" placeholder="id_cliente">
+                                    <select name="id_cliente" class=" block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
+                                        @foreach($clientes as $cliente)
+                                        <option class=" text-black" value="{{$cliente->id}}">{{$cliente->nome}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                         </div>

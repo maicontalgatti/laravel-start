@@ -24,10 +24,9 @@
 
                 <div class="p-6 text-gray-900 dark:text-gray-100 dark:bg-gray-700 bg-gray-100 rounded-lg">
                     <div class="flex ">
-                        <div class="w-1/4 ">Nome</div>
-                        <div class="w-1/4 ">Setor</div>
-                        <div class="w-1/4 ">Função</div>
-                        <div class="w-1/4 ">Observação</div>
+                        <div class="w-2/4 ">Nome</div>
+                        <div class="w-1/4 ">Endereço</div>
+                        <div class="w-1/4 ">Telefone</div>
                     </div>
                 </div>
             </div>
@@ -38,9 +37,8 @@
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900 dark:text-gray-100">
                         <div class="flex ">
-                            <div class="w-1/4">{{$cliente->nome}}</div>
-                            <div class="w-1/4">{{$cliente->cidade}}</div>
-                            <div class="w-1/4">{{$cliente->estado}}</div>
+                            <div class="w-2/4">{{$cliente->nome}}</div>
+                            <div class="w-1/4">{{$cliente->cidade}} - {{$cliente->estado}}</div>
                             <div class="w-1/4">{{$cliente->telefone}}</div>
                         </div>
                         <!--<div class="p-6 text-gray-900 dark:text-gray-100">
