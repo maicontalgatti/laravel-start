@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\cliente;
 use App\Models\Pessoa;
+use App\Models\veiculo;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -29,14 +31,28 @@ class RecordsController extends Controller
         //return response('Hello, World!');
         return view('records.projects');
     }
-    public function vehicles():View
+    public function vehicles()
     {
         //return response('Hello, World!');
-        return view('records.vehicles');
+        //return view('records.clients');
+
+        $veiculos = Veiculo::all();
+
+        //return view('records.people');
+        return view('records.vehicles', [
+            'veiculos' => $veiculos
+        ]);
     }
-    public function clients():View
+    public function clients()
     {
         //return response('Hello, World!');
-        return view('records.clients');
+        //return view('records.clients');
+
+        $clientes = Cliente::all();
+
+        //return view('records.people');
+        return view('records.clients', [
+            'clientes' => $clientes
+        ]);
     }
 }

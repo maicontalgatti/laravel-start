@@ -5,11 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class veiculo extends Model
+class cliente extends Model
 {
     use HasFactory;
-
-    protected $fillable = ['marca', 'modelo', 'placa', 'km_aquisicao', 'km_atual', 'per_troca_oleo_km', 'ultima_troca_oleo_km'];
+    protected $fillable = ['nome','cidade','estado','telefone'];
 
     public static function getAll()
     {
@@ -24,10 +23,7 @@ class veiculo extends Model
     {
         return self::find($id);
     }
-    public static function createVehicle($data)
-    {
-        return self::create($data);
-    }
+
     public static function updateById($id, $data)
     {
         $registro = self::find($id);
@@ -41,6 +37,10 @@ class veiculo extends Model
         $registro->delete();
     }
 
+    public static function createClient(array $data)
+    {
+        return self::create($data);
+    }
 
 
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\RecordsController;
 use App\Http\Controllers\ChirpController;
 use App\Http\Controllers\PeopleController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\VehicleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,6 +49,10 @@ Route::get('/records/project/add', [ProjectController::class, 'new'])->name('pro
 //rotas das views de records ADD CLIENTES
 Route::get('/records/client/add', [ClientController::class, 'new'])->name('client.add');
 Route::post('/records/client/add', [ClientController::class, 'store'])->name('client.store');
+
+//rotas das views de records ADD VEICULOS
+Route::get('/records/vehicle/add', [VehicleController::class, 'new'])->name('vehicle.add');
+Route::post('/records/vehicle/add', [VehicleController::class, 'store'])->name('vehiclevehicle.store');
 
 
 Route::get('/dashboard', function () {

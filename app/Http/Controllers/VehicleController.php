@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Client;
-use App\Models\cliente;
+use App\Models\veiculo;
 use Illuminate\Http\Request;
 
-class ClientController extends Controller
+class VehicleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -29,14 +28,14 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->only(['nome', 'cidade', 'estado', 'telefone']);
-        Cliente::createClient($data);
+        $data = $request->only(['marca', 'modelo', 'placa', 'km_aquisicao', 'km_atual', 'per_troca_oleo_km', 'ultima_troca_oleo_km']);
+        Veiculo::createVehicle($data);
     }
 
-    public function new()
-    {
-        return view('records.form_client');
 
+    public function new(Request $request)
+    {
+        return view('records.form_vehicle');
     }
     /**
      * Display the specified resource.
