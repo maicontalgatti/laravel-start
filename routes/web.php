@@ -44,6 +44,7 @@ Route::post('/records/people/add', [PeopleController::class, 'store'])->name('pe
 //rotas das views de records ADD PROJETOS
 Route::get('/records/project/add', [ProjectController::class, 'new'])->name('project.add');
 Route::post('/records/project/add', [ProjectController::class, 'store'])->name('project.store');
+Route::get('/records/project/edit/{id}', [ProjectController::class, 'show'])->name('project.edit');
 
 //rotas das views de records ADD CLIENTES
 Route::get('/records/client/add', [ClientController::class, 'new'])->name('client.add');

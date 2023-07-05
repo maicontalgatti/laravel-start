@@ -34,7 +34,17 @@ class ProjectController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $projeto = Projeto::getById($id);
+        $clientes = Cliente::all();
+
+        //return view('records.people');
+        return view('records.edit_project', [
+            'projeto' => $projeto,
+            'clientes' => $clientes
+        ]);
+
+
+
     }
 
     /**
