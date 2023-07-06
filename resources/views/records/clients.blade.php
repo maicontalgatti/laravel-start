@@ -24,9 +24,10 @@
 
                 <div class="p-6 text-gray-900 dark:text-gray-100 dark:bg-gray-700 bg-gray-100 rounded-lg">
                     <div class="flex ">
-                        <div class="w-2/4 ">Nome</div>
-                        <div class="w-1/4 ">Endereço</div>
-                        <div class="w-1/4 ">Telefone</div>
+                        <div class="w-3/6 ">Nome</div>
+                        <div class="w-1/6 ">Endereço</div>
+                        <div class="w-1/6 ">Telefone</div>
+                        <div class="w-1/6 "></div>
                     </div>
                 </div>
             </div>
@@ -37,12 +38,17 @@
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900 dark:text-gray-100">
                         <div class="flex ">
-                            <div class="w-2/4">{{$cliente->nome}}</div>
-                            <div class="w-1/4">{{$cliente->cidade}} - {{$cliente->estado}}</div>
-                            <div class="w-1/4">{{$cliente->telefone}}</div>
+                            <div class="w-3/6">{{$cliente->nome}}</div>
+                            <div class="w-1/6">{{$cliente->cidade}} - {{$cliente->estado}}</div>
+                            <div class="w-1/6">{{$cliente->telefone}}</div>
+                            <div class="w-1/6">
+                                <a href="{{route('client.edit', $cliente->id)}}" class="flex items-center justify-center rounded-md border border-transparent text-base font-medium text-white shadow-sm ">
+                                    <button  type="button" class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                                        Editar
+                                    </button>
+                                </a>
+                            </div>
                         </div>
-                        <!--<div class="p-6 text-gray-900 dark:text-gray-100">
-                        </div>-->
                     </div>
                 </div>
             </div>

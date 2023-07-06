@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\cliente;
+use App\Models\projeto;
 use App\Models\veiculo;
 use Illuminate\Http\Request;
 
@@ -43,7 +45,12 @@ class VehicleController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $veiculo = veiculo::getById($id);
+
+        //return view('records.people');
+        return view('records.edit_vehicle', [
+            'veiculo' => $veiculo,
+        ]);
     }
 
     /**
@@ -59,7 +66,10 @@ class VehicleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->only(['marca', 'modelo', 'placa', 'km_aquisicao', 'km_atual', 'per_troca_oleo_km', 'ultima_troca_oleo_km']);
+        $veiculo = veiculo::find($id);
+        $veiculo->update($data);
+        return redirect(route('records.vehicles'));
     }
 
     /**

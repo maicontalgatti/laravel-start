@@ -40,19 +40,26 @@ Route::get('/records/clients', [RecordsController::class, 'clients'])->name('rec
 //rotas das views de records ADD PESSOAS
 Route::get('/records/people/add', [PeopleController::class, 'new'])->name('people.add');
 Route::post('/records/people/add', [PeopleController::class, 'store'])->name('people.store');
+Route::get('/records/people/edit/{id}', [PeopleController::class, 'show'])->name('people.edit');
+Route::put('/records/people/edit/{id}', [PeopleController::class, 'update'])->name('people.update');
 
 //rotas das views de records ADD PROJETOS
 Route::get('/records/project/add', [ProjectController::class, 'new'])->name('project.add');
 Route::post('/records/project/add', [ProjectController::class, 'store'])->name('project.store');
 Route::get('/records/project/edit/{id}', [ProjectController::class, 'show'])->name('project.edit');
+Route::put('/records/project/edit/{id}', [ProjectController::class, 'update'])->name('project.update');
 
 //rotas das views de records ADD CLIENTES
 Route::get('/records/client/add', [ClientController::class, 'new'])->name('client.add');
 Route::post('/records/client/add', [ClientController::class, 'store'])->name('client.store');
+Route::get('/records/client/edit/{id}', [ClientController::class, 'show'])->name('client.edit');
+Route::put('/records/client/edit/{id}', [ClientController::class, 'update'])->name('client.update');
 
 //rotas das views de records ADD VEICULOS
 Route::get('/records/vehicle/add', [VehicleController::class, 'new'])->name('vehicle.add');
 Route::post('/records/vehicle/add', [VehicleController::class, 'store'])->name('vehicle.store');
+Route::get('/records/vehicle/edit/{id}', [VehicleController::class, 'show'])->name('vehicle.edit');
+Route::put('/records/vehicle/edit/{id}', [VehicleController::class, 'update'])->name('vehicle.update');
 
 
 Route::get('/dashboard', function () {

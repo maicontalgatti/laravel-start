@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pessoa;
+use App\Models\veiculo;
 use Illuminate\Http\Request;
 
 class PeopleController extends Controller
@@ -44,7 +45,15 @@ class PeopleController extends Controller
     /**
      * Display the specified resource.
      */
+    public function show(string $id)
+    {
+        $pessoa = pessoa::getById($id);
 
+        //return view('records.people');
+        return view('records.edit_people', [
+            'pessoa' => $pessoa,
+        ]);
+    }
     /**
      * Show the form for editing the specified resource.
      */
@@ -58,7 +67,10 @@ class PeopleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->only(['nome','setor','funcao','observacao']);
+        $pessoa = pessoa::find($id);
+        $pessoa->update($data);
+        return redirect(route('records.people'));
     }
 
     /**

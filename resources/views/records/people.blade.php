@@ -24,10 +24,11 @@
 
                 <div class="p-6 text-gray-900 dark:text-gray-100 dark:bg-gray-700 bg-gray-100 rounded-lg">
                     <div class="flex ">
-                        <div class="w-1/4 ">Nome</div>
-                        <div class="w-1/4 ">Setor</div>
-                        <div class="w-1/4 ">Função</div>
-                        <div class="w-1/4 ">Observação</div>
+                        <div class="w-2/6 ">Nome</div>
+                        <div class="w-1/6 ">Setor</div>
+                        <div class="w-1/6 ">Função</div>
+                        <div class="w-1/6 ">Observação</div>
+                        <div class="w-1/6 "></div>
                     </div>
                 </div>
             </div>
@@ -37,14 +38,19 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" style="margin-top: 5px">
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900 dark:text-gray-100">
-                                    <div class="flex ">
-                                        <div class="w-1/4">{{$pessoa->nome}}</div>
-                                        <div class="w-1/4">{{$pessoa->setor}}</div>
-                                        <div class="w-1/4">{{$pessoa->funcao}}</div>
-                                        <div class="w-1/4">{{$pessoa->observacao}}</div>
-                                    </div>
-                                    <!--<div class="p-6 text-gray-900 dark:text-gray-100">
-                                    </div>-->
+                        <div class="flex ">
+                            <div class="w-2/6">{{$pessoa->nome}}</div>
+                            <div class="w-1/6">{{$pessoa->setor}}</div>
+                            <div class="w-1/6">{{$pessoa->funcao}}</div>
+                            <div class="w-1/6">{{$pessoa->observacao}}</div>
+                            <div class="w-1/6">
+                                <a href="{{route('people.edit', $pessoa->id)}}" class="flex items-center justify-center rounded-md border border-transparent text-base font-medium text-white shadow-sm ">
+                                    <button  type="button" class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                                        Editar
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

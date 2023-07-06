@@ -1,14 +1,15 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Cadastros > Projetos > Novo cadastro') }}
+            {{ __('Cadastros > Projetos > Editar') }}
         </h2>
     </x-slot>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-6">
         <section class="py-3">
             <div class="container px-4 mx-auto">
                 <div class="p-8 dark:bg-gray-800 bg-white rounded-xl">
-                    <form method="post" action="{{route('project.store')}}">
+                    <form method="post" action="{{route('project.update', $projeto->id)}}">
+                        @method('put')
                         @csrf
                         <div class="flex flex-wrap items-center justify-between -mx-4 mb-8 pb-6 border-b border-gray-400 border-opacity-20">
                             <div class="w-full sm:w-auto px-4 mb-6 sm:mb-0">
@@ -56,6 +57,7 @@
                                         @foreach($clientes as $cliente)
                                         <option @if($projeto->id_cliente == $cliente->id) selected @endif  class="text-black" value="{{$cliente->id}}">{{$cliente->nome}}</option>
                                         @endforeach
+
                                     </select>
                                 </div>
                             </div>
@@ -81,7 +83,6 @@
                                     <input value="{{$projeto->custo_montagem_esperado}}" name="custo_montagem_esperado" class=" w-2/4 py-4 px-3 text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg" type="number" placeholder="Esperado">
                                     <input value="{{$projeto->custo_montagem_real}}" name="custo_montagem_real" class=" w-2/4 py-4 px-3 text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg" type="number" placeholder="Real">
                                 </div>
-
                             </div>
                         </div>
                     </form>

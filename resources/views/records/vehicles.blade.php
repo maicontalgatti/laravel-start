@@ -24,10 +24,11 @@
 
                 <div class="p-6 text-gray-900 dark:text-gray-100 dark:bg-gray-700 bg-gray-100 rounded-lg">
                     <div class="flex ">
-                        <div class="w-2/5 ">Marca - Modelo</div>
-                        <div class="w-1/5 ">Placa</div>
-                        <div class="w-1/5 ">Quilometragem atual</div>
-                        <div class="w-1/5 ">Ultima troca de óleo</div>
+                        <div class="w-2/6 ">Marca - Modelo</div>
+                        <div class="w-1/6 ">Placa</div>
+                        <div class="w-1/6 ">Quilometragem atual</div>
+                        <div class="w-1/6 ">Ultima troca de óleo</div>
+                        <div class="w-1/6 "></div>
                     </div>
                 </div>
             </div>
@@ -38,13 +39,18 @@
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900 dark:text-gray-100">
                         <div class="flex ">
-                            <div class="w-2/5">{{$veiculo->marca}} {{$veiculo->modelo}}</div>
-                            <div class="w-1/5">{{$veiculo->placa}}</div>
-                            <div class="w-1/5">Km {{$veiculo->km_atual}}</div>
-                            <div class="w-1/5">Km {{$veiculo->ultima_troca_oleo_km}}</div>
+                            <div class="w-2/6">{{$veiculo->marca}} {{$veiculo->modelo}}</div>
+                            <div class="w-1/6">{{$veiculo->placa}}</div>
+                            <div class="w-1/6">Km {{$veiculo->km_atual}}</div>
+                            <div class="w-1/6">Km {{$veiculo->ultima_troca_oleo_km}}</div>
+                            <div class="w-1/6 ">
+                                <a href="{{route('vehicle.edit', $veiculo->id)}}"  class="flex items-center justify-center rounded-md border border-transparent text-base font-medium text-white shadow-sm ">
+                                    <button type="button" class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                                        Editar
+                                    </button>
+                                </a>
+                            </div>
                         </div>
-                        <!--<div class="p-6 text-gray-900 dark:text-gray-100">
-                        </div>-->
                     </div>
                 </div>
             </div>

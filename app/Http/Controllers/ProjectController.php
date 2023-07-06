@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\cliente;
 use App\Models\projeto;
 use Illuminate\Http\Request;
+use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 
 class ProjectController extends Controller
 {
@@ -43,8 +44,6 @@ class ProjectController extends Controller
             'clientes' => $clientes
         ]);
 
-
-
     }
 
     /**
@@ -60,7 +59,10 @@ class ProjectController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->only(['numero','nome','cidade','estado','id_cliente','data_inicio_montagem_esperado','data_inicio_montagem_real','custo_montagem_esperado','custo_montagem_real']);
+        $projeto = projeto::find($id);
+        $projeto->update($data);
+        return redirect(route('records.projects'));
     }
 
     /**
