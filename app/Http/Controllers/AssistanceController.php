@@ -14,6 +14,12 @@ class AssistanceController extends Controller
         return view('assistance.index');
     }
 
+    public function new():View
+    {
+        //return response('Hello, World!');
+        return view('assistance.new');
+    }
+
 
 
 

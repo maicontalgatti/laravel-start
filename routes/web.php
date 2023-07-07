@@ -25,7 +25,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/assistance', [AssistanceController::class, 'index'])->name('assistance.index');
 
 Route::get('/records', [RecordsController::class, 'index'])->name('records.index');
 
@@ -60,6 +59,11 @@ Route::get('/records/vehicle/add', [VehicleController::class, 'new'])->name('veh
 Route::post('/records/vehicle/add', [VehicleController::class, 'store'])->name('vehicle.store');
 Route::get('/records/vehicle/edit/{id}', [VehicleController::class, 'show'])->name('vehicle.edit');
 Route::put('/records/vehicle/edit/{id}', [VehicleController::class, 'update'])->name('vehicle.update');
+
+//rotas das views de assistance
+
+Route::get('/assistance', [AssistanceController::class, 'index'])->name('assistance.index');
+Route::get('/assistance/new', [AssistanceController::class, 'new'])->name('assistance.new');
 
 
 Route::get('/dashboard', function () {
