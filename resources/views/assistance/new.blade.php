@@ -23,27 +23,35 @@
                             </div>
                         </div>
                         <!--form-->
-                        <div class="flex flex-wrap items-center -mx-4 pb-8 mb-8 border-b border-gray-400 border-opacity-20">
-                            <div class="w-6/12 sm:w-1/3 px-4 mb-4 sm:mb-0">
-                                <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Marca / modelo</span>
+
+                        <div class="flex flex-wrap bg-gray-200">
+                            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/4 text-gray-700 text-center bg-gray-400 px-4 py-2 m-2" style="padding-right: 2px; padding-left: 2px">
+                                <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Tipo de assistência</span>
+                                <select name="id_cliente" class=" block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
+                                    <option class="text-black">Mecânica</option>
+                                    <option class="text-black">Elétrica</option>
+                                </select></div>
+                            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/4 text-gray-700 text-center bg-gray-400 px-4 py-2 m-2" style="padding-right: 2px; padding-left: 2px">
+                                <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Cliente</span>
+                                <input name="marca" class="w-full py-4 px-3 text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg" type="text" placeholder="Marca">
                             </div>
-                            <div class="w-6/12 sm:w-2/3 px-4">
-                                <div class="flex max-w-xl">
-                                    <input name="marca" class=" w-2/4 py-4 px-3 text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg" type="text" placeholder="Marca">
-                                    <input name="modelo" class=" w-2/4 py-4 px-3 text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg" type="text" placeholder="Modelo">
-                                </div>
+                            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/4 text-gray-700 text-center bg-gray-400 px-4 py-2 m-2" style="padding-right: 2px; padding-left: 2px">
+                                <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Status</span>
+                                <select name="id_cliente" class=" block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
+                                    <option class="text-black">Iniciada</option>
+                                    <option class="text-black">Terminada</option>
+                                </select>
+                            </div>
+                            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/4 text-gray-700 text-center bg-gray-400 px-4 py-2 m-2" style="padding-right: 2px; padding-left: 2px">
+                                <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Garantia?</span>
+                                <select name="id_cliente" class=" block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
+                                    <option class="text-black">Sim</option>
+                                    <option class="text-black">Não</option>
+                                </select>
                             </div>
                         </div>
-                        <div class="w-2/4 flex flex-wrap items-center -mx-4 pb-8 mb-8 border-b border-gray-400 border-opacity-20">
-                            <div class="w-6/12 sm:w-1/3 px-4 mb-4 sm:mb-0">
-                                <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Setor</span>
-                            </div>
-                            <div class="w-6/12 sm:w-2/3 px-4">
-                                <div class="max-w-xl">
-                                    <input name="setor" class=" block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg"   type="text" placeholder="Setor">
-                                </div>
-                            </div>
-                        </div>
+
+
                         <div class="flex flex-wrap items-center -mx-4 pb-8 mb-8 border-b border-gray-400 border-opacity-20">
                             <div class="w-full sm:w-1/3 px-4 mb-4 sm:mb-0">
                                 <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Função</span>
