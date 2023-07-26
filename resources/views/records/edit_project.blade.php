@@ -57,7 +57,6 @@
                                         @foreach($clientes as $cliente)
                                         <option @if($projeto->id_cliente == $cliente->id) selected @endif  class="text-black" value="{{$cliente->id}}">{{$cliente->nome}}</option>
                                         @endforeach
-
                                     </select>
                                 </div>
                             </div>
