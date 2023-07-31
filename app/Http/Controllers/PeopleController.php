@@ -48,7 +48,6 @@ class PeopleController extends Controller
     public function show(string $id)
     {
         $pessoa = pessoa::getById($id);
-
         //return view('records.people');
         return view('records.edit_people', [
             'pessoa' => $pessoa,

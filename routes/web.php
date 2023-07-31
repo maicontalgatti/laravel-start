@@ -63,7 +63,7 @@ Route::put('/records/vehicle/edit/{id}', [VehicleController::class, 'update'])->
 //rotas das views de assistance
 Route::get('/assistance', [AssistanceController::class, 'index'])->name('assistance.index');
 Route::get('/assistance/new', [AssistanceController::class, 'new'])->name('assistance.new');
-Route::post('/assistance/record', [ProjectController::class, 'store'])->name('assistance.store');
+Route::post('/assistance/store', [AssistanceController::class, 'store'])->name('assistance.store');
 
 
 Route::get('/dashboard', function () {
