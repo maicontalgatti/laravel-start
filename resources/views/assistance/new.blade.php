@@ -71,8 +71,8 @@
                             <div class="w-full sm:w-1/3 px-4 mb-4 sm:mb-0">
                                 <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Técnico/Engenheiro</span>
                                 <select name="id_pessoas" class=" block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
-                                    <option value="1" class="text-black">abc</option>
-                                    <option value="2" class="text-black">dfg</option>
+                                    <option value="1" class="text-black">josé</option>
+                                    <option value="2" class="text-black">Zé</option>
                                 </select>
                             </div>
                         </div>

@@ -35,7 +35,7 @@
                                     {{ __('Nova') }}
                                 </x-dropdown-link>
                                 <x-dropdown-link :href="route('assistance.index')" :active="request()->routeIs('assistance.index')" >
-                                    {{ __('Em aberto') }}
+                                    {{ __('Todas') }}
                                 </x-dropdown-link>
                             </x-slot>
                         </x-dropdown>

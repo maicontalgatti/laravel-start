@@ -12,14 +12,10 @@ class AssistanceController extends Controller
 {
     public function index():View
     {
-
-        $assistencia = assistencia::all();
-
-        //return view('records.people');
+        $assistencias = Assistencia::all();
         return view('assistance.index', [
-            'assistencia' => $assistencia,
+            'assistencias' => $assistencias,
         ]);
-        //return view('assistance.index');
     }
 
     public function new():View
