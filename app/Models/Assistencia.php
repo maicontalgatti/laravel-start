@@ -41,5 +41,8 @@ class assistencia extends Model
         $registro = self::find($id);
         $registro->delete();
     }
-
+    public function cliente()
+    {
+        return $this->belongsTo(Cliente::class);
+    }
 }

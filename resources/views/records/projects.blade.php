@@ -25,8 +25,8 @@
                     <div class="flex ">
                          <div class="w-2/6 ">Projeto</div>
                         <div class="w-1/6 ">Localização</div>
-                        <div class="w-2/6 ">Data início de montagem esperado e real</div>
-                        <div class="w-1/6 ">Custo esperado/real </div>
+                        <div class="w-2/6 ">Inicio de montagem esperado</div>
+                        <div class="w-1/6 ">Custo esperado</div>
                         <div class="w-1/6 "> </div>
                     </div>
                 </div>
@@ -39,8 +39,10 @@
                         <div class="flex ">
                             <div class="w-2/6 ">{{$projeto->numero}} - {{$projeto->nome}}</div>
                             <div class="w-1/6 ">{{$projeto->cidade}} - {{$projeto->estado}}</div>
-                            <div class="w-2/6 ">{{$projeto->data_inicio_montagem_esperado}} -> {{$projeto->data_inicio_montagem_real}}</div>
-                            <div class="w-1/6 ">R$ {{$projeto->custo_montagem_esperado}} - R$ {{$projeto->custo_montagem_real}}</div>
+                            <div class="w-2/6 ">
+                                <?php echo date("d-m-Y", strtotime($projeto->data_inicio_montagem_esperado)); ?>
+                            </div>
+                            <div class="w-1/6 ">R$ {{$projeto->custo_montagem_esperado}} </div>
                             <div class="w-1/6 ">
                                 <a href="{{route('project.edit', $projeto->id)}}"  class="flex items-center justify-center rounded-md border border-transparent text-base font-medium text-white shadow-sm ">
                                     <button type="button" class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">

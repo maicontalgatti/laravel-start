@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\cliente;
+use App\Models\Pessoa;
 use App\Models\projeto;
 use App\Models\assistencia;
 use Illuminate\Http\Request;
@@ -12,7 +13,14 @@ class AssistanceController extends Controller
 {
     public function index():View
     {
-        $assistencias = Assistencia::all();
+        //Como estava feito
+        //  $assistencias = Assistencia::all();
+        //  return view('assistance.index', [
+        //       'assistencias' => $assistencias,
+        //   ]);
+
+        //referência que encontrei
+        $assistencias = Assistencia::with('Cliente')->get();
         return view('assistance.index', [
             'assistencias' => $assistencias,
         ]);
@@ -22,9 +30,10 @@ class AssistanceController extends Controller
     {
         $projetos = Projeto::all();
         $clientes = Cliente::all();
-        //return view('records.people');
+        $pessoas = Pessoa::all();
         return view('assistance.new', [
             'projetos' => $projetos,
+            'pessoas' => $pessoas,
             'clientes' => $clientes
         ]);
     }
