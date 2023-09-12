@@ -22,7 +22,6 @@
                 </div>
             </div>
         </div>
-
         @foreach($assistencias as $assistencia)
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" style="margin-top: 5px">
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
@@ -57,6 +56,7 @@
                     </div>
                 </div>
             </div>
+
         @endforeach
 
         <!-- Adicione a biblioteca Font Awesome para o ícone de seta -->

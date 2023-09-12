@@ -2,4 +2,9 @@
 .hidden {
     display: none;
 }
-
+._red{
+    background-color: red!important;
+    border-color: red!important;
+    min-height: 50px!important;
+    min-width: 50px!important;
+}
