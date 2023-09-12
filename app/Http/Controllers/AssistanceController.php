@@ -13,17 +13,17 @@ class AssistanceController extends Controller
 {
     public function index():View
     {
-        //Como estava feito
-        //  $assistencias = Assistencia::all();
-        //  return view('assistance.index', [
-        //       'assistencias' => $assistencias,
-        //   ]);
+        //Como estava feito (mas essa funciona e é bem mais simples)
+          $assistencias = Assistencia::all();
+          return view('assistance.index', [
+               'assistencias' => $assistencias,
+           ]);
 
         //referência que encontrei
-        $assistencias = Assistencia::with('Cliente')->get();
-        return view('assistance.index', [
-            'assistencias' => $assistencias,
-        ]);
+        //$assistencias = Assistencia::with('Cliente')->get();
+        //return view('assistance.index', [
+          //  'assistencias' => $assistencias,
+        //]);
     }
 
     public function new():View

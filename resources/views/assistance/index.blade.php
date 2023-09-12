@@ -38,7 +38,7 @@
                                     };
                                 ?>
                                 <div class="w-1/6">{{$assistencia->tipo_assistencia}}</div>
-                                <div class="w-1/6">{{$assistencia->id_cliente}}</div>
+                                <div class="w-1/6">{{$assistencia->cliente->nome}}</div>
                                 <div class="w-1/6">
                                         <?php echo date("d-m-Y", strtotime($assistencia->data_chamado)); ?>
                                 </div>

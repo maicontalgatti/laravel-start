@@ -123,15 +123,60 @@
         </div>
     </div>
 
-    <!-- Responsive Navigation Menu -->
+    <!-- Menu responsivo para celular  -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
+            <!-- home -->
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('chirps.index')" :active="request()->routeIs('chirps.index')">
-                {{ __('Chirps') }}
-            </x-responsive-nav-link>
+
+            <!-- Assistências -->
+            <x-dropdown align="right" width="48">
+                <x-slot name="trigger">
+                    <x-responsive-nav-link>
+                        {{ __('Assistências') }}
+                    </x-responsive-nav-link>
+                </x-slot>
+
+                <x-slot name="content">
+                    <!-- Aqui você pode adicionar os sub-botões -->
+                    <x-responsive-nav-link :href="route('assistance.new')" :active="request()->routeIs('assistance.new')">
+                        {{ __('Nova') }}
+                    </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('assistance.index')" :active="request()->routeIs('assistance.index')">
+                        {{ __('Todas') }}
+                    </x-responsive-nav-link>
+                </x-slot>
+            </x-dropdown>
+
+            <!-- Cadastros -->
+            <x-dropdown align="right" width="48">
+                <x-slot name="trigger">
+                    <x-responsive-nav-link>
+                        {{ __('Cadastros') }}
+                    </x-responsive-nav-link>
+                </x-slot>
+
+                <x-slot name="content">
+                    <!-- Aqui você pode adicionar os sub-botões -->
+                    <x-responsive-nav-link :href="route('records.people')" :active="request()->routeIs('people.showPeople')">
+                        {{ __('Pessoas') }}
+                    </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('records.projects')" :active="request()->routeIs('projects.show')">
+                        {{ __('Projetos') }}
+                    </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('records.vehicles')" :active="request()->routeIs('vehicles.show')">
+                        {{ __('Veículos') }}
+                    </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('records.clients')" :active="request()->routeIs('clients.show')">
+                        {{ __('Clientes') }}
+                    </x-responsive-nav-link>
+                </x-slot>
+            </x-dropdown>
+
+
+
         </div>
 
         <!-- Responsive Settings Options -->
