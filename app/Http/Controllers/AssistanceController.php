@@ -19,11 +19,6 @@ class AssistanceController extends Controller
                'assistencias' => $assistencias,
            ]);
 
-        //referência que encontrei
-        //$assistencias = Assistencia::with('Cliente')->get();
-        //return view('assistance.index', [
-          //  'assistencias' => $assistencias,
-        //]);
     }
 
     public function new():View
@@ -39,7 +34,7 @@ class AssistanceController extends Controller
     }
     public function store(Request $request)
     {
-        $data = $request->only(['tipo_assistencia','status','garantia','quantidade_horas','horario_inicio','horario_fim','data_chamado','data_atendimento','descricao','id_cliente','id_pessoas','id_projetos']);
+        $data = $request->only(['tipo_assistencia','status','garantia','quantidade_horas', 'horario_inicio','horario_fim','data_chamado','data_atendimento','descricao','id_cliente','id_pessoas','id_projetos']);
         assistencia::createAssistance($data);
         return redirect(route('assistance.index'));
     }
