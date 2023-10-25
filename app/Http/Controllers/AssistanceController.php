@@ -39,6 +39,15 @@ class AssistanceController extends Controller
         return redirect(route('assistance.index'));
     }
 
+    public function show(string $id)
+    {
+        $assistencia = assistencia::getById($id);
+
+        //return view('records.people');
+        return view('assistance.edit', [
+            'assistencia' => $assistencia,
+        ]);
+    }
 
 
 }

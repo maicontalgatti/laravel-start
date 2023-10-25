@@ -64,6 +64,7 @@ Route::put('/records/vehicle/edit/{id}', [VehicleController::class, 'update'])->
 Route::get('/assistance', [AssistanceController::class, 'index'])->name('assistance.index');
 Route::get('/assistance/new', [AssistanceController::class, 'new'])->name('assistance.new');
 Route::post('/assistance/store', [AssistanceController::class, 'store'])->name('assistance.store');
+Route::get('/assistance/edit/{id}', [AssistanceController::class, 'show'])->name('assistance.edit');
 
 
 Route::get('/dashboard', function () {

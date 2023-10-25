@@ -40,7 +40,7 @@
                             <div class="w-full sm:w-1/6 mb-2 sm:mb-0">{{$assistencia->cliente->nome}}</div>
                             <div class="w-full sm:w-1/6 mb-2 sm:mb-0">{{$assistencia->data_chamado}}</div>
                             <div class="w-full sm:w-1/6 mb-2 sm:mb-0">
-                                <a href="{{route('assistance.edit')}}" class="block w-full rounded-md border border-transparent px-6 py-3 text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:border-indigo-700 focus:ring focus:ring-indigo-200 active:bg-indigo-800">
+                                <a href="{{route('assistance.edit', $assistencia->id)}}" class="block w-full rounded-md border border-transparent px-6 py-3 text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:border-indigo-700 focus:ring focus:ring-indigo-200 active:bg-indigo-800">
                                     Editar
                                 </a>
                             </div>
