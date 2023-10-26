@@ -36,25 +36,24 @@
                             <div class="w-full sm:w-1/4 px-4 mb-4 sm:mb-0">
                                 <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Cliente</span>
                                 <select name="id_cliente" class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
-                                    <option class=" text-black" value=""></option>
-                                   <!--foreach($clientes as $cliente)
-                                        <option class=" text-black" value="$cliente->id">$cliente->nome</option>
-                                    endforeach-->
+                                    @foreach($clientes as $cliente)
+                                        <option @if($assistencia->id_cliente == $cliente->id) selected @endif  class="text-black" value="{{$cliente->id}}">{{$cliente->nome}}</option>
+                                    @endforeach
                                 </select>
 
                             </div>
                             <div class="w-full sm:w-1/4 px-4 mb-4 sm:mb-0">
                                 <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Status</span>
                                 <select name="status" class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
-                                    <option value='aberta' class="text-black">Aberta</option>
-                                    <option value='fechada' class="text-black">Finalizada</option>
+                                    <option value="aberta" class="text-black" @if($assistencia->status == 'aberta') selected @endif  >Aberta</option>
+                                    <option value="fechada" class="text-black" @if($assistencia->status == 'fechada') selected @endif  >Finalizada</option>
                                 </select>
                             </div>
                             <div class="w-full sm:w-1/4 px-4 mb-4 sm:mb-0">
                                 <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Garantia:</span>
                                 <select id="garantia" name="garantia" class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
-                                    <option class="text-black" value="sim">Sim</option>
-                                    <option class="text-black" value="nao" selected>Não</option>
+                                    <option class="text-black" value="sim" @if($assistencia->garantia == 'sim') selected @endif >Sim</option>
+                                    <option class="text-black" value="nao" @if($assistencia->garantia == 'nao') selected @endif >Não</option>
                                 </select>
                             </div>
                         </div>
@@ -63,7 +62,7 @@
                         <div class="flex flex-wrap items-center -mx-4 pb-8 mb-8 border-b border-gray-400 border-opacity-20">
                             <div class="w-full sm:w-1/3 px-4 mb-4 sm:mb-0">
                                 <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Quantidade de horas</span>
-                                <input id="quantidade_horas" type="text" name="quantidade_horas" class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
+                                <input value="{{$assistencia->quantidade_horas}}" id="quantidade_horas" type="text" name="quantidade_horas" class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
                             </div>
                             <div class="w-full sm:w-1/3 px-4 mb-4 sm:mb-0">
                                 <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Preço da hora</span>
@@ -72,9 +71,9 @@
                             <div class="w-full sm:w-1/3 px-4 mb-4 sm:mb-0">
                                 <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Técnico/Engenheiro</span>
                                 <select name="id_pessoas" class=" block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
-                                    <!--foreach($pessoas as $pessoa)
-                                        <option class=" text-black" value="$pessoa->nome">$pessoa->nome</option>
-                                     endforeach-->
+                                    @foreach($pessoas as $pessoa)
+                                        <option @if($assistencia->id_pessoas == $pessoa->id) selected @endif  class="text-black" value="{{$pessoa->id}}">{{$pessoa->nome}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -94,11 +93,11 @@
                         <div class="flex flex-wrap items-center -mx-4 pb-8 mb-8 border-b border-gray-400 border-opacity-20">
                             <div class="w-full sm:w-1/2 px-4 mb-4 sm:mb-0">
                                 <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Data Chamado</span>
-                                <input id="data_chamado" type="date" name="data_chamado" class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
+                                <input value="{{$assistencia->data_chamado}}" id="data_chamado" type="date" name="data_chamado" class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
                             </div>
                             <div class="w-full sm:w-1/2 px-4 mb-4 sm:mb-0">
                                 <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Data atendimento</span>
-                                <input id="data_atendimento" type="date" name="data_atendimento" class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
+                                <input value="{{$assistencia->data_atendimento}}" id="data_atendimento" type="date" name="data_atendimento" class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
                             </div>
                         </div>
 
@@ -108,9 +107,9 @@
                                 <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Projeto</span>
                                 <select id="id_projetos" name="id_projetos" class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
                                     <option class=" text-black" value="nenhum">- / -</option>
-                                    <!--foreach($projetos as $projeto)
-                                        <option class=" text-black" value="$projeto->id}}">$projeto->nome}}</option>
-                                    endforeach-->
+                                    @foreach($projetos as $projeto)
+                                        <option @if($assistencia->id_projeto == $projeto->id) selected @endif class=" text-black" value="{{$projeto->id}}">{{$projeto->nome}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

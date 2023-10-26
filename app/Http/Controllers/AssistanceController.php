@@ -42,10 +42,16 @@ class AssistanceController extends Controller
     public function show(string $id)
     {
         $assistencia = assistencia::getById($id);
+        $clientes = Cliente::all();
+        $pessoas = Pessoa::all();;
+        $projetos = projeto::all();
 
         //return view('records.people');
         return view('assistance.edit', [
             'assistencia' => $assistencia,
+            'clientes' => $clientes,
+            'pessoas' => $pessoas,
+            'projetos' => $projetos
         ]);
     }
 
