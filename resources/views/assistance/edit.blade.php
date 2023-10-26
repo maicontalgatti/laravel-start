@@ -13,7 +13,7 @@
                         @csrf
                         <div class="flex flex-wrap items-center justify-between -mx-4 mb-8 pb-6 border-b border-gray-400 border-opacity-20">
                             <div class="w-full sm:w-auto px-4 mb-6 sm:mb-0">
-                                <h4 class="text-2xl font-bold tracking-wide dark:text-gray-300 text-gray-900 mb-1">Nova assistência</h4>
+                                <h4 class="text-2xl font-bold tracking-wide dark:text-gray-300 text-gray-900 mb-1">Alterar assistência</h4>
                                 <p id="click_me" class="text-sm dark:text-gray-300 text-gray-900">dados salvos após clicar em "salvar"</p>
                             </div>
                             <div class="w-full sm:w-auto px-4">
@@ -24,6 +24,20 @@
                             </div>
                         </div>
                         <!--form-->
+                            <!-- DIV 2 INPUT -->
+                            <div class="flex flex-wrap items-center -mx-4 pb-8 mb-8 border-b border-gray-400 border-opacity-20">
+                                <div class="w-full sm:w-1/2 px-4 mb-4 sm:mb-0">
+                                    <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Titulo</span>
+                                    <input value="{{$assistencia->titulo}}" id="titulo" type="text" name="titulo" class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
+                                </div>
+                                <div class="w-full sm:w-1/2 px-4 mb-4 sm:mb-0">
+                                    <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Porcentagem de concluído</span>
+                                    <div class="flex items-center">
+                                        <input value="{{$assistencia->percentage}}" id="percentage" type="number" name="percentage" class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-l-lg">
+                                        <span class="py-4 px-3 bg-gray-200 text-gray-900 font-medium rounded-r-lg">%</span>
+                                    </div>
+                                </div>
+                            </div>
                         <!-- DIV 4 INPUT -->
                         <div class="flex flex-wrap items-center -mx-4 pb-8 mb-8 border-b border-gray-400 border-opacity-20">
                             <div class="w-full sm:w-1/4 px-4 mb-4 sm:mb-0">
@@ -66,7 +80,7 @@
                             </div>
                             <div class="w-full sm:w-1/3 px-4 mb-4 sm:mb-0">
                                 <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Preço da hora</span>
-                                <input id="preco_hora" type="text" name="" class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
+                                <input value="{{$assistencia->preco_hora}}" id="preco_hora" type="text" name="" class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
                             </div>
                             <div class="w-full sm:w-1/3 px-4 mb-4 sm:mb-0">
                                 <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Técnico/Engenheiro</span>
@@ -75,17 +89,6 @@
                                         <option @if($assistencia->id_pessoas == $pessoa->id) selected @endif  class="text-black" value="{{$pessoa->id}}">{{$pessoa->nome}}</option>
                                     @endforeach
                                 </select>
-                            </div>
-                        </div>
-                        <!-- DIV 2 INPUT -->
-                        <div class="flex flex-wrap items-center -mx-4 pb-8 mb-8 border-b border-gray-400 border-opacity-20">
-                            <div class="w-full sm:w-1/2 px-4 mb-4 sm:mb-0">
-                                <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Horário início</span>
-                                <input id="horario_inicio" type="text" name="horario_inicio" class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
-                            </div>
-                            <div class="w-full sm:w-1/2 px-4 mb-4 sm:mb-0">
-                                <span class="text-sm font-medium dark:text-gray-300 text-gray-900">horário fim</span>
-                                <input id="horario_fim" type="text" name="horario_fim" class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
                             </div>
                         </div>
 
@@ -108,7 +111,7 @@
                                 <select id="id_projetos" name="id_projetos" class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
                                     <option class=" text-black" value="nenhum">- / -</option>
                                     @foreach($projetos as $projeto)
-                                        <option @if($assistencia->id_projeto == $projeto->id) selected @endif class=" text-black" value="{{$projeto->id}}">{{$projeto->nome}}</option>
+                                        <option @if($assistencia->id_projetos == $projeto->id) selected @endif class=" text-black" value="{{$projeto->id}}">{{$projeto->nome}}</option>
                                     @endforeach
                                 </select>
                             </div>
