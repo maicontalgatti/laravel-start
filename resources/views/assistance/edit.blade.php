@@ -59,8 +59,8 @@
                             <div class="w-full sm:w-1/4 px-4 mb-4 sm:mb-0">
                                 <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Status</span>
                                 <select name="status" class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
-                                    <option value="aberto" class="text-black" @if($assistencia->status == 'aberta') selected @endif  >Aberto</option>
-                                    <option value="fechada" class="text-black" @if($assistencia->status == 'fechada') selected @endif  >Finalizada</option>
+                                    <option value="Aberto" class="text-black" @if($assistencia->status == 'aberta') selected @endif  >Aberto</option>
+                                    <option value="Fechada" class="text-black" @if($assistencia->status == 'fechada') selected @endif  >Finalizada</option>
                                 </select>
                             </div>
                             <div class="w-full sm:w-1/4 px-4 mb-4 sm:mb-0">
