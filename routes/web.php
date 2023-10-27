@@ -65,6 +65,7 @@ Route::get('/assistance', [AssistanceController::class, 'index'])->name('assista
 Route::get('/assistance/new', [AssistanceController::class, 'new'])->name('assistance.new');
 Route::post('/assistance/store', [AssistanceController::class, 'store'])->name('assistance.store');
 Route::get('/assistance/edit/{id}', [AssistanceController::class, 'show'])->name('assistance.edit');
+Route::put('/assistance/save/{id}', [AssistanceController::class, 'update'])->name('assistance.save');
 
 
 Route::get('/dashboard', function () {

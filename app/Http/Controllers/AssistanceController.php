@@ -55,5 +55,12 @@ class AssistanceController extends Controller
         ]);
     }
 
+    public function update(Request $request, string $id)
+    {
+        $data = $request->only(['tipo_assistencia','status','garantia','quantidade_horas', 'horario_inicio','horario_fim','data_chamado','data_atendimento','descricao','id_cliente','id_pessoas','id_projetos','titulo','percentage']);
+        $assistencia = assistencia::find($id);
+        $assistencia->update($data);
+        return redirect(route('assistance.index'));
+    }
 
 }

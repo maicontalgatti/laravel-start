@@ -34,7 +34,7 @@
                     @elseif($assistencia->status === 'Aberto')
                         text-red-500
                     @endif">
-                                {{$assistencia->status}}
+                                {{$assistencia->status}} - {{$assistencia->percentage}} %
                             </div>
                             <div class="w-full sm:w-1/6 mb-2 sm:mb-0">{{$assistencia->tipo_assistencia}}</div>
                             <div class="w-full sm:w-1/6 mb-2 sm:mb-0">{{$assistencia->cliente->nome}}</div>
