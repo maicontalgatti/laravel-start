@@ -27,7 +27,7 @@
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm my-2 sm:rounded-lg">
                     <div class="p-6 text-gray-900 dark:text-gray-100">
                         <div class="flex flex-col sm:flex-row">
-                            <div class="w-full sm:w-2/6 mb-2 sm:mb-0 text-blue-500 font-semibold">{{$assistencia->descricao}}</div>
+                            <div class="w-full sm:w-2/6 mb-2 sm:mb-0 text-blue-500 font-semibold">{{$assistencia->titulo}}</div>
                             <div class="w-full sm:w-1/6 mb-2 sm:mb-0
                     @if($assistencia->status === 'Fechado')
                         text-green-500

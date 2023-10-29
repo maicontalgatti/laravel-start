@@ -45,4 +45,28 @@ class assistencia extends Model
     {
         return $this->belongsTo(Cliente::class, 'id_cliente', 'id');
     }
+    public static function contarAssistenciasAbertas()
+    {
+        return self::where('status', 'Aberto')->count();
+    }
+    public static function contarAssistenciasFechado()
+    {
+        return self::where('status', 'Fechado')->count();
+    }
+    public static function contarAssistenciasTipoMecanica()
+    {
+        return self::where('tipo_assistencia', 'mecanica')->count();
+    }
+    public static function contarAssistenciasTipoEletrica()
+    {
+        return self::where('tipo_assistencia', 'eletrica')->count();
+    }
+    public static function contarAssistenciasComGarantia()
+    {
+        return self::where('garantia', 'sim')->count();
+    }
+    public static function contarAssistenciasSemGarantia()
+    {
+        return self::where('garantia', 'nao')->count();
+    }
 }

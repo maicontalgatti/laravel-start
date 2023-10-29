@@ -43,8 +43,8 @@
                             <div class="w-full sm:w-1/4 px-4 mb-4 sm:mb-0">
                                 <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Tipo de assistência</span>
                                 <select name="tipo_assistencia" class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
-                                    <option value="mecanica" class="text-black" @if($assistencia->tipo_assistencia == 'Mecânica') selected @endif  >Mecânica</option>
-                                    <option value="eletrica" class="text-black" @if($assistencia->tipo_assistencia == 'Elétrica') selected @endif  >Elétrica</option>
+                                    <option value="mecanica" class="text-black" @if($assistencia->tipo_assistencia == 'mecanica') selected @endif  >Mecânica</option>
+                                    <option value="eletrica" class="text-black" @if($assistencia->tipo_assistencia == 'eletrica') selected @endif  >Elétrica</option>
                                 </select>
                             </div>
                             <div class="w-full sm:w-1/4 px-4 mb-4 sm:mb-0">

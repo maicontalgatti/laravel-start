@@ -62,9 +62,9 @@
                                 <x-dropdown-link :href="route('records.projects')" :active="request()->routeIs('projects.show')" >
                                     {{ __('Projetos') }}
                                 </x-dropdown-link>
-                                <x-dropdown-link :href="route('records.vehicles')" :active="request()->routeIs('vehicles.show')">
-                                    {{ __('Veículos') }}
-                                </x-dropdown-link>
+                                <!--<x-dropdown-link :href="route('records.vehicles')" :active="request()->routeIs('vehicles.show')">
+                                    __('Veículos') }}
+                                </x-dropdown-link>-->
                                 <x-dropdown-link :href="route('records.clients')" :active="request()->routeIs('clients.show')" >
                                     {{ __('Clientes') }}
                                 </x-dropdown-link>
@@ -96,7 +96,7 @@
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
+                            {{ __('Perfil') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->
@@ -106,7 +106,7 @@
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('Sair') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
@@ -168,9 +168,9 @@
                     <x-responsive-nav-link :href="route('records.projects')" :active="request()->routeIs('projects.show')">
                         {{ __('Projetos') }}
                     </x-responsive-nav-link>
-                    <x-responsive-nav-link :href="route('records.vehicles')" :active="request()->routeIs('vehicles.show')">
-                        {{ __('Veículos') }}
-                    </x-responsive-nav-link>
+                    <!--<x-responsive-nav-link :href="route('records.vehicles')" :active="request()->routeIs('vehicles.show')">
+                         __('Veículos') }}
+                    </x-responsive-nav-link>-->
                     <x-responsive-nav-link :href="route('records.clients')" :active="request()->routeIs('clients.show')">
                         {{ __('Clientes') }}
                     </x-responsive-nav-link>
@@ -190,7 +190,7 @@
 
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
+                    {{ __('Perfil') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
@@ -200,7 +200,7 @@
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('Sair') }}
                     </x-responsive-nav-link>
                 </form>
             </div>
