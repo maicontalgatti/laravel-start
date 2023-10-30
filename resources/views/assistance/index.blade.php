@@ -5,6 +5,7 @@
         </h2>
     </x-slot>
 
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
@@ -21,38 +22,33 @@
             </div>
         </div>
 
-    @foreach($assistencias as $assistencia)
+        @foreach($assistencias as $assistencia)
 
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm my-2 sm:rounded-lg">
-                    <div class="p-6 text-gray-900 dark:text-gray-100">
-                        <div class="flex flex-col sm:flex-row">
-                            <div class="w-full sm:w-2/6 mb-2 sm:mb-0 text-blue-500 font-semibold">{{$assistencia->titulo}}</div>
-                            <div class="w-full sm:w-1/6 mb-2 sm:mb-0
-                    @if($assistencia->status === 'Fechado')
-                        text-green-500
-                    @elseif($assistencia->status === 'Aberto')
-                        text-red-500
-                    @endif">
-                                {{$assistencia->status}} - {{$assistencia->percentage}} %
-                            </div>
-                            <div class="w-full sm:w-1/6 mb-2 sm:mb-0">{{$assistencia->tipo_assistencia}}</div>
-                            <div class="w-full sm:w-1/6 mb-2 sm:mb-0">{{$assistencia->cliente->nome}}</div>
-                            <div class="w-full sm:w-1/6 mb-2 sm:mb-0">{{$assistencia->data_chamado}}</div>
-                            <div class="w-full sm:w-1/6 mb-2 sm:mb-0">
-                                <a href="{{route('assistance.edit', $assistencia->id)}}" class="block w-full rounded-md border border-transparent px-6 py-3 text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:border-indigo-700 focus:ring focus:ring-indigo-200 active:bg-indigo-800">
-                                    Editar
-                                </a>
-                            </div>
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm my-2 sm:rounded-lg">
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                    <div class="flex flex-col sm:flex-row">
+                        <div class="w-full sm:w-2/6 mb-2 sm:mb-0 text-blue-500 font-semibold">{{$assistencia->titulo}}</div>
+                        <div class="w-full sm:w-1/6 mb-2 sm:mb-0
+                @if($assistencia->status === 'Fechada')
+                    text-green-500
+                @elseif($assistencia->status === 'Aberta')
+                    text-red-500
+                @endif">
+                            {{$assistencia->status}} - {{$assistencia->percentage}} %
+                        </div>
+                        <div class="w-full sm:w-1/6 mb-2 sm:mb-0">{{$assistencia->tipo_assistencia}}</div>
+                        <div class="w-full sm:w-1/6 mb-2 sm:mb-0">{{$assistencia->cliente->nome}}</div>
+                        <div class="w-full sm:w-1/6 mb-2 sm:mb-0">{{$assistencia->data_chamado}}</div>
+                        <div class="w-full sm:w-1/6 mb-2 sm:mb-0">
+                            <a href="{{route('assistance.edit', $assistencia->id)}}" class="block w-full rounded-md border border-transparent px-6 py-3 text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:border-indigo-700 focus:ring focus:ring-indigo-200 active:bg-indigo-800">
+                                Editar
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
-
-
+        </div>
         @endforeach
 
         <!-- Adicione a biblioteca Font Awesome para o ícone de seta -->

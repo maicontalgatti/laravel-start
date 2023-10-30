@@ -6,8 +6,10 @@
     </x-slot>
 
 
+
+
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" >
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
 
@@ -23,36 +25,43 @@
                 </div>
 
                 <div class="p-6 text-gray-900 dark:text-gray-100 dark:bg-gray-700 bg-gray-100 rounded-lg">
-                    <div class="flex ">
-                        <div class="w-3/6 ">Nome</div>
-                        <div class="w-1/6 ">Endereço</div>
-                        <div class="w-1/6 ">Telefone</div>
-                        <div class="w-1/6 "></div>
+                    <div class="flex flex-col sm:flex-row">
+                        <div class="w-full sm:w-2/6 mb-2 sm:mb-0 text-blue-500 font-semibold">Nome</div>
+                        <div class="w-full sm:w-1/6 mb-2 sm:mb-0">Endereço</div>
+                        <div class="w-full sm:w-1/6 mb-2 sm:mb-0">Telefone</div>
+                        <div class="w-full sm:w-1/6 mb-2 sm:mb-0"> </div>
+                        <div class="w-full sm:w-1/6 mb-2 sm:mb-0"></div>
+                        <div class="w-full sm:w-1/6"></div>
+
+
                     </div>
                 </div>
             </div>
         </div>
 
         @foreach($clientes as $cliente)
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" style="margin-top: 5px">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm my-2 sm:rounded-lg">
                     <div class="p-6 text-gray-900 dark:text-gray-100">
-                        <div class="flex ">
-                            <div class="w-3/6">{{$cliente->nome}}</div>
-                            <div class="w-1/6">{{$cliente->cidade}} - {{$cliente->estado}}</div>
-                            <div class="w-1/6">{{$cliente->telefone}}</div>
-                            <div class="w-1/6">
-                                <a href="{{route('client.edit', $cliente->id)}}" class="flex items-center justify-center rounded-md border border-transparent text-base font-medium text-white shadow-sm ">
-                                    <button  type="button" class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-                                        Editar
-                                    </button>
+                        <div class="flex flex-col sm:flex-row">
+
+                            <div class="w-full sm:w-2/6 mb-2 sm:mb-0 text-blue-500 font-semibold">{{$cliente->nome}}</div>
+                            <div class="w-full sm:w-1/6 mb-2 sm:mb-0">{{$cliente->cidade}} - {{$cliente->estado}}</div>
+                            <div class="w-full sm:w-1/6 mb-2 sm:mb-0"> {{$cliente->telefone}}</div>
+                            <div class="w-full sm:w-1/6 mb-2 sm:mb-0"> </div>
+                            <div class="w-full sm:w-1/6 mb-2 sm:mb-0"></div>
+                            <div class="w-full sm:w-1/6 mb-2 sm:mb-0">
+                                <a href="{{route('client.edit', $cliente->id)}}" class="block w-full rounded-md border border-transparent px-6 py-3 text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:border-indigo-700 focus:ring focus:ring-indigo-200 active:bg-indigo-800">
+                                    Editar
                                 </a>
                             </div>
+
+
                         </div>
                     </div>
                 </div>
             </div>
         @endforeach
-
     </div>
+
 </x-app-layout>

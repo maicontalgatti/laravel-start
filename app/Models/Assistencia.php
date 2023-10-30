@@ -10,7 +10,7 @@ class assistencia extends Model
     use HasFactory;
 
     // Colunas da tabela
-    protected $fillable = ['tipo_assistencia','status','garantia','quantidade_horas','horario_inicio','horario_fim','data_chamado','data_atendimento','descricao','id_cliente','id_pessoas','id_projetos','titulo','percentage'];
+    protected $fillable = ['tipo_assistencia','status','garantia','quantidade_horas','preco_hora','horario_inicio','horario_fim','data_chamado','data_atendimento','descricao','id_cliente','id_pessoas','id_projetos','titulo','percentage'];
 
     public static function getAll()
     {
