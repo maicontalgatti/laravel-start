@@ -109,7 +109,7 @@
                             <div class="w-full px-4 mb-4 sm:mb-0">
                                 <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Projeto</span>
                                 <select id="id_projetos" name="id_projetos" class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
-                                    <option class=" text-black" value="nenhum">- / -</option>
+                                    <option class=" text-black" value="">- / -</option>
                                     @foreach($projetos as $projeto)
                                         <option @if($assistencia->id_projetos == $projeto->id) selected @endif class=" text-black" value="{{$projeto->id}}">{{$projeto->nome}}</option>
                                     @endforeach
