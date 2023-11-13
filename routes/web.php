@@ -68,6 +68,16 @@ Route::get('/assistance/edit/{id}', [AssistanceController::class, 'show'])->name
 Route::put('/assistance/save/{id}', [AssistanceController::class, 'update'])->name('assistance.save');
 
 
+Route::get('/test-connection', function () {
+    try {
+        DB::connection('oracle')->getPdo();
+        echo "Conexão Oracle bem-sucedida!";
+    } catch (\Exception $e) {
+        echo "Erro na conexão Oracle: " . $e->getMessage();
+    }
+});
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

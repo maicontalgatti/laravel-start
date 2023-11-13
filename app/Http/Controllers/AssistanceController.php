@@ -36,6 +36,7 @@ class AssistanceController extends Controller
     {
         $data = $request->only(['tipo_assistencia','status','garantia','quantidade_horas','preco_hora', 'horario_inicio','horario_fim','data_chamado','data_atendimento','descricao','id_cliente','id_pessoas','id_projetos','titulo','percentage']);
         assistencia::createAssistance($data);
+
         return redirect(route('assistance.index'));
     }
 
