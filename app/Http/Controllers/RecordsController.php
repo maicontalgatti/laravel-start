@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\cliente;
+use App\Models\Cliente_cigam;
 use App\Models\Pessoa;
 use App\Models\projeto;
 use App\Models\veiculo;
@@ -53,12 +53,8 @@ class RecordsController extends Controller
     }
     public function clients()
     {
-        //return response('Hello, World!');
-        //return view('records.clients');
+        $clientes = Cliente_cigam::getAll();
 
-        $clientes = Cliente::all();
-
-        //return view('records.people');
         return view('records.clients', [
             'clientes' => $clientes
         ]);

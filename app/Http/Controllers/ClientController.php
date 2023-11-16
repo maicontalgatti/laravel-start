@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Client;
-use App\Models\cliente;
-use App\Models\projeto;
+//use App\Models\Client;
+use App\Models\cliente_cigam;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -30,9 +29,9 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->only(['nome', 'cidade', 'estado', 'telefone']);
-        Cliente::createClient($data);
-        return redirect(route('records.clients'));
+       // $data = $request->only(['nome', 'cidade', 'estado', 'telefone']);
+       // Cliente::createClient($data);
+        //return redirect(route('records.clients'));
     }
 
     public function new()
@@ -45,7 +44,7 @@ class ClientController extends Controller
      */
     public function show(string $id)
     {
-        $cliente = Cliente::find($id);
+        $cliente = Cliente_cigam::find($id);
 
         //return view('records.people');
         return view('records.edit_clients', [
@@ -67,10 +66,10 @@ class ClientController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $data = $request->only(['nome','cidade','estado','telefone']);
-        $cliente = cliente::find($id);
-        $cliente->update($data);
-        return redirect(route('records.clients'));
+        //$data = $request->only(['nome','cidade','estado','telefone']);
+        //$cliente = cliente::find($id);
+        //$cliente->update($data);
+       // return redirect(route('records.clients'));
     }
 
     /**

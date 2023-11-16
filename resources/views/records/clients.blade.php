@@ -4,10 +4,6 @@
             {{ __('Cadastros > Clientes') }}
         </h2>
     </x-slot>
-
-
-
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
@@ -44,16 +40,13 @@
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm my-2 sm:rounded-lg">
                     <div class="p-6 text-gray-900 dark:text-gray-100">
                         <div class="flex flex-col sm:flex-row">
-
-                            <div class="w-full sm:w-2/6 mb-2 sm:mb-0 text-blue-500 font-semibold">{{$cliente->nome}}</div>
-                            <div class="w-full sm:w-1/6 mb-2 sm:mb-0">{{$cliente->cidade}} - {{$cliente->estado}}</div>
-                            <div class="w-full sm:w-1/6 mb-2 sm:mb-0"> {{$cliente->telefone}}</div>
+                            <div class="w-full sm:w-2/6 mb-2 sm:mb-0 text-blue-500 font-semibold">{{$cliente->nome_completo}}</div>
+                            <div class="w-full sm:w-1/6 mb-2 sm:mb-0">{{$cliente->municipio}} </div>
+                            <div class="w-full sm:w-1/6 mb-2 sm:mb-0"> {{$cliente->uf}}</div>
                             <div class="w-full sm:w-1/6 mb-2 sm:mb-0"> </div>
                             <div class="w-full sm:w-1/6 mb-2 sm:mb-0"></div>
                             <div class="w-full sm:w-1/6 mb-2 sm:mb-0">
-                                <a href="{{route('client.edit', $cliente->id)}}" class="block w-full rounded-md border border-transparent px-6 py-3 text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:border-indigo-700 focus:ring focus:ring-indigo-200 active:bg-indigo-800">
-                                    Editar
-                                </a>
+
                             </div>
 
 
