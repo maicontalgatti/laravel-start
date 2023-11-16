@@ -9,7 +9,7 @@ class cliente extends Model
 {
     use HasFactory;
     protected $connection = 'mysql';
-    protected $fillable = ['nome','cidade','estado','telefone'];
+    protected $fillable = ['nome','cidade','telefone','estado'];
 
     public static function getAll()
     {

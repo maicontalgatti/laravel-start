@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente_cigam;
-use App\Models\Pessoa;
+use App\Models\Pessoa_cigam;
 use App\Models\projeto;
 use App\Models\veiculo;
 use Illuminate\Http\Request;
@@ -18,22 +18,14 @@ class RecordsController extends Controller
     }
     public function people()
     {
-        //return response('Hello, World!');
-
-        $pessoas = Pessoa::all();
-
-        //return view('records.people');
+        $pessoas = Pessoa_cigam::getAll();
         return view('records.people', [
             'pessoas' => $pessoas
         ]);
     }
     public function projects():View
     {
-        //return response('Hello, World!');
-        //return view('records.projects');
-
         $projetos = Projeto::all();
-        //return view('records.people');
         return view('records.projects', [
             'projetos' => $projetos
         ]);
