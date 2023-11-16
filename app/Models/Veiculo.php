@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class veiculo extends Model
 {
     use HasFactory;
-
+    protected $connection = 'mysql';
     protected $fillable = ['marca', 'modelo', 'placa', 'km_aquisicao', 'km_atual', 'per_troca_oleo_km', 'ultima_troca_oleo_km'];
 
     public static function getAll()

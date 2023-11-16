@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class projeto extends Model
 {
     use HasFactory;
+    protected $connection = 'mysql';
     // Colunas da tabela
     protected $fillable = ['numero','nome','cidade','estado','id_cliente','data_inicio_montagem_esperado','data_inicio_montagem_real','custo_montagem_esperado','custo_montagem_real'];
     public static function getAll()

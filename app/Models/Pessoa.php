@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pessoa extends Model
 {
     use HasFactory;
+    protected $connection = 'mysql';
 
     // Colunas da tabela
     protected $fillable = ['nome','setor','funcao','observacao'];

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class assistencia extends Model
 {
     use HasFactory;
+    protected $connection = 'mysql';
 
     // Colunas da tabela
     protected $fillable = ['tipo_assistencia','status','garantia','quantidade_horas','preco_hora','horario_inicio','horario_fim','data_chamado','data_atendimento','descricao','id_cliente','id_pessoas','id_projetos','titulo','percentage'];

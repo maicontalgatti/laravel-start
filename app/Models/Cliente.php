@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class cliente extends Model
 {
     use HasFactory;
+    protected $connection = 'mysql';
     protected $fillable = ['nome','cidade','estado','telefone'];
 
     public static function getAll()
