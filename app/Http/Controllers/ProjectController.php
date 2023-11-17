@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\cliente;
+use App\Models\Cliente_cigam;
 use App\Models\projeto;
 use Illuminate\Http\Request;
 use SebastianBergmann\CodeCoverage\Report\Xml\Project;
@@ -85,7 +86,7 @@ class ProjectController extends Controller
     public function new()
     {
         //return view('records.form_project');
-        $clientes = Cliente::all();
+        $clientes = Cliente_cigam::getAll();
 
         //return view('records.people');
         return view('records.form_project', [

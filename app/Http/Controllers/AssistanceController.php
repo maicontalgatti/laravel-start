@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\cliente;
+use App\Models\Cliente_cigam;
 use App\Models\Pessoa;
 use App\Models\projeto;
 use App\Models\assistencia;
@@ -24,7 +25,7 @@ class AssistanceController extends Controller
     public function new():View
     {
         $projetos = Projeto::all();
-        $clientes = Cliente::all();
+        $clientes = Cliente_cigam::getAll();
         $pessoas = Pessoa::all();
         return view('assistance.new', [
             'projetos' => $projetos,

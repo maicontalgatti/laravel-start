@@ -51,10 +51,9 @@
                                 <select name="id_cliente" class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
                                     <option class=" text-black" value=""></option>
                                     @foreach($clientes as $cliente)
-                                        <option class=" text-black" value="{{$cliente->id}}">{{$cliente->nome}}</option>
+                                        <option class=" text-black" value="{{$cliente->cd_empresa}}">{{$cliente->nome_completo}}</option>
                                     @endforeach
                                 </select>
-
                             </div>
                             <div class="w-full sm:w-1/4 px-4 mb-4 sm:mb-0">
                                 <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Status</span>
