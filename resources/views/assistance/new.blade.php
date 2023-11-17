@@ -2,7 +2,7 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Assistências > Nova ') }}
-        </h2>
+        </h2>     <!-- Select2 -->
     </x-slot>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-6">
         <section class="py-3">
@@ -49,11 +49,12 @@
                             <div class="w-full sm:w-1/4 px-4 mb-4 sm:mb-0">
                                 <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Cliente</span>
                                 <select name="id_cliente" class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
-                                    <option class=" text-black" value=""></option>
+                                   <option class=" text-black" value=""></option>
                                     @foreach($clientes as $cliente)
                                         <option class=" text-black" value="{{$cliente->cd_empresa}}">{{$cliente->nome_completo}}</option>
                                     @endforeach
                                 </select>
+                                <!--</select>-->
                             </div>
                             <div class="w-full sm:w-1/4 px-4 mb-4 sm:mb-0">
                                 <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Status</span>
@@ -126,20 +127,40 @@
                                 <div id='desc_ass' class="max-w-xl"><textarea name="descricao" class="block h-56 py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg resize-none"   type="text" placeholder="Digite aqui.."></textarea></div>
                             </div>
                         </div>
-
-                        <!--
-                            finish
-                        -->
-
-
-
-                        <!-- DIV 2 INPUT -->
-
+                        <select class="js-example-basic-single" name="state">
+                            <option value=" ">Alabama</option>
+                            <option value=" ">Wyoming</option>
+                            <option value=" ">Wyoming</option>
+                            <option value=" ">Wyoming</option>
+                            <option value=" ">Wyoming</option>
+                            <option value=" ">Wyoming</option>
+                            <option value=" ">Wyoming</option>
+                            <option value=" ">Wyoming</option>
+                            <option value=" ">Wyoming</option>
+                            <option value=" ">Wyoming</option>
+                            <option value=" ">Wyoming</option>
+                            <option value=" ">Wyoming</option>
+                            <option value=" ">Wyoming</option>
+                            <option value=" ">Wyoming</option>
+                            <option value=" ">Wyoming</option>
+                            <option value=" ">Wyoming</option>
+                            <option value=" ">Wyoming</option>
+                            <option value=" ">Wyoming</option>
+                            <option value=" ">Wyoming</option>
+                        </select>
                     </form>
                 </div>
             </div>
         </section>
     </div>
+
+
+    <script>
+        // In your Javascript (external .js resource or <script> tag)
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+        });
+    </script>
 
 
 </x-app-layout>
