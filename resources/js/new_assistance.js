@@ -1,4 +1,11 @@
 
+// In your Javascript (external .js resource or <script> tag)
+
+
+
+$(document).ready(function() {
+    $('#id_cliente').select2();
+});
 
 if (document.querySelector('#garantia')) {
     //AO ALTERAR UM SELECT, MOSTRAR OU OCULTAR ELEMENTO

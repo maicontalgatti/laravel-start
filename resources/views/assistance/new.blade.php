@@ -10,6 +10,7 @@
                 <div class="p-8 dark:bg-gray-800 bg-white rounded-xl">
                     <form method="post" action="{{route('assistance.store')}}">
                         @csrf
+                        
                         <div class="flex flex-wrap items-center justify-between -mx-4 mb-8 pb-6 border-b border-gray-400 border-opacity-20">
                             <div class="w-full sm:w-auto px-4 mb-6 sm:mb-0">
                                 <h4 class="text-2xl font-bold tracking-wide dark:text-gray-300 text-gray-900 mb-1">Nova assistência</h4>
@@ -48,7 +49,7 @@
                             </div>
                             <div class="w-full sm:w-1/4 px-4 mb-4 sm:mb-0">
                                 <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Cliente</span>
-                                <select name="id_cliente" class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
+                                <select name="id_cliente" id="id_cliente" class=" block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
                                    <option class=" text-black" value=""></option>
                                     @foreach($clientes as $cliente)
                                         <option class=" text-black" value="{{$cliente->cd_empresa}}">{{$cliente->nome_completo}}</option>
@@ -127,40 +128,11 @@
                                 <div id='desc_ass' class="max-w-xl"><textarea name="descricao" class="block h-56 py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg resize-none"   type="text" placeholder="Digite aqui.."></textarea></div>
                             </div>
                         </div>
-                        <select class="js-example-basic-single" name="state">
-                            <option value=" ">Alabama</option>
-                            <option value=" ">Wyoming</option>
-                            <option value=" ">Wyoming</option>
-                            <option value=" ">Wyoming</option>
-                            <option value=" ">Wyoming</option>
-                            <option value=" ">Wyoming</option>
-                            <option value=" ">Wyoming</option>
-                            <option value=" ">Wyoming</option>
-                            <option value=" ">Wyoming</option>
-                            <option value=" ">Wyoming</option>
-                            <option value=" ">Wyoming</option>
-                            <option value=" ">Wyoming</option>
-                            <option value=" ">Wyoming</option>
-                            <option value=" ">Wyoming</option>
-                            <option value=" ">Wyoming</option>
-                            <option value=" ">Wyoming</option>
-                            <option value=" ">Wyoming</option>
-                            <option value=" ">Wyoming</option>
-                            <option value=" ">Wyoming</option>
-                        </select>
+
                     </form>
                 </div>
             </div>
         </section>
     </div>
-
-
-    <script>
-        // In your Javascript (external .js resource or <script> tag)
-        $(document).ready(function() {
-            $('.js-example-basic-single').select2();
-        });
-    </script>
-
 
 </x-app-layout>

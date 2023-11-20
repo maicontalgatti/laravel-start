@@ -22,7 +22,6 @@
             </div>
         </div>-->
 
-
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mx-auto">
             <div class="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
 
