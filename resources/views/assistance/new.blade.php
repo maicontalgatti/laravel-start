@@ -10,7 +10,7 @@
                 <div class="p-8 dark:bg-gray-800 bg-white rounded-xl">
                     <form method="post" action="{{route('assistance.store')}}">
                         @csrf
-                        
+
                         <div class="flex flex-wrap items-center justify-between -mx-4 mb-8 pb-6 border-b border-gray-400 border-opacity-20">
                             <div class="w-full sm:w-auto px-4 mb-6 sm:mb-0">
                                 <h4 class="text-2xl font-bold tracking-wide dark:text-gray-300 text-gray-900 mb-1">Nova assistência</h4>
@@ -93,17 +93,88 @@
                             </div>
                         </div>
 
+
+                        <!-- DIV 1 INPUT -->
+                        <div class="flex flex-wrap items-center -mx-4 pb-8 mb-8 border-b border-gray-400 border-opacity-20">
+                            <div class="w-full px-4 mb-4 sm:mb-0">
+                                <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Tecnico</span>
+                                <!--<select name="id_pessoas" class=" block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">-->
+                                <select class="js-example-basic-multiple block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg" name="states[]" multiple="multiple">
+                                    @foreach($pessoas as $pessoa)
+                                        <option class=" text-black" value="{{$pessoa->id}}">{{$pessoa->nome}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap items-center -mx-4 pb-8 mb-8 border-b border-gray-400 border-opacity-20">
+
+                            <!-- BUTTON DIV -->
+                            <div class="w-full sm:w-6/6 px-2 mb-2 sm:mb-0">
+                                <button id='exibe_campos' class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
+                                    Exibir
+                                </button>
+                            </div>
+                            <!-- INPUTS DIV -->
+                            <div style="margin-left:auto;margin-right:auto" class=" flex flex-wrap items-center -mx-4 pb-8 mb-8 border-b border-gray-400 border-opacity-20 ">
+                                <div style="margin-bottom: 0px;margin-top: 20px;" class="w-full sm:w-1/4 px-4 mb-4 sm:mb-0">
+                                    <p class="responsive-hide text-sm font-medium dark:text-gray-300 text-gray-900">Turno da manhã</p>
+                                </div>
+                                <div class="w-full sm:w-1/4 px-4 mb-4 sm:mb-0">
+                                    <span class="responsive-hide text-sm font-medium dark:text-gray-300 text-gray-900">Hora inicial</span>
+                                    <input id="preco_hora" name="preco_hora" type="text"  class="responsive-hide block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
+                                </div>
+                                <div class="w-full sm:w-1/4 px-4 mb-4 sm:mb-0">
+                                    <span class="responsive-hide text-sm font-medium dark:text-gray-300 text-gray-900">Hora final</span>
+                                    <input id="preco_hora" name="preco_hora" type="text"  class="responsive-hide block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
+                                </div>
+                                <div class="w-full sm:w-1/4 px-4 mb-4 sm:mb-0">
+                                    <span class="responsive-hide text-sm font-medium dark:text-gray-300 text-gray-900">Total de horas</span>
+                                    <input id="preco_hora" name="preco_hora" type="text"  class="responsive-hide block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+
+                            <!-- DIV 3 INPUT -->
+                            <div class="flex flex-wrap items-center -mx-4 pb-8 mb-8 border-b border-gray-400 border-opacity-20">
+                                <div class="w-full sm:w-1/3 px-4 mb-4 sm:mb-0">
+                                    <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Hora inicial</span>
+                                    <input id="preco_hora" name="preco_hora" type="text"  class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
+                                </div>
+                                <div class="w-full sm:w-1/3 px-4 mb-4 sm:mb-0">
+                                    <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Hora final</span>
+                                    <input id="preco_hora" name="preco_hora" type="text"  class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
+                                </div>
+                                <div class="w-full sm:w-1/3 px-4 mb-4 sm:mb-0">
+                                    <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Total de horas</span>
+                                    <input id="preco_hora" name="preco_hora" type="text"  class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
+                                </div>
+                            </div>
+                        </div>
+
+
                         <!-- DIV 2 INPUT -->
                         <div class="flex flex-wrap items-center -mx-4 pb-8 mb-8 border-b border-gray-400 border-opacity-20">
                             <div class="w-full sm:w-1/2 px-4 mb-4 sm:mb-0">
                                 <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Data Chamado</span>
-                                <input id="data_chamado" type="date" name="data_chamado" class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
+                                <input id="" type="date" name="" class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
                             </div>
                             <div class="w-full sm:w-1/2 px-4 mb-4 sm:mb-0">
                                 <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Data atendimento</span>
-                                <input id="data_atendimento" type="date" name="data_atendimento" class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
+                                <input id="" type="date" name="" class="block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
                             </div>
                         </div>
+
+
+                        <style>
+                            @media (max-width: 640px) {
+                                .responsive-hide {
+                                    display: none;
+                                }
+                            }
+                        </style>
 
                         <!-- DIV 1 INPUT -->
                         <div class="flex flex-wrap items-center -mx-4 pb-8 mb-8 border-b border-gray-400 border-opacity-20">
