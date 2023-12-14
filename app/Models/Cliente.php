@@ -11,19 +11,20 @@ class cliente extends Model
     protected $connection = 'mysql';
     protected $fillable = ['nome','cidade','telefone','estado'];
 
-    public static function getAll()
+  public static function getAll()
     {
         return self::all();
     }
-    public static function getByCondition($column, $value)
+    public static function getById($id)
+{
+    return self::find($id);
+}
+ /*     public static function getByCondition($column, $value)
     {
         return self::where($column, $value)->get();
     }
 
-    public static function getById($id)
-    {
-        return self::find($id);
-    }
+
 
     public static function updateById($id, $data)
     {
@@ -41,7 +42,7 @@ class cliente extends Model
     public static function createClient(array $data)
     {
         return self::create($data);
-    }
+    }*/
 
 
 

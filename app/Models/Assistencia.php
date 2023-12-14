@@ -11,8 +11,7 @@ class assistencia extends Model
     protected $connection = 'mysql';
 
     // Colunas da tabela
-    protected $fillable = ['tipo_assistencia','status','garantia','quantidade_horas','preco_hora','horario_inicio','horario_fim','data_chamado','data_atendimento','descricao','id_cliente','id_pessoas','id_projetos','titulo','percentage'];
-
+    protected $fillable = ['tipo_assistencia','status','garantia','data_chamado','data_atendimento','descricao','id_cliente','id_projetos','titulo','percentage'];
     public static function getAll()
     {
         return self::all();
@@ -44,7 +43,7 @@ class assistencia extends Model
     }
     public function cliente()
     {
-        return $this->belongsTo(Cliente::class, 'id_cliente', 'id');
+        return $this->belongsTo(Cliente_cigam::class, 'id_cliente', 'cd_empresa');
     }
     public static function contarAssistenciasAbertas()
     {

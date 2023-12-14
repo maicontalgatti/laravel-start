@@ -16,9 +16,8 @@ class Cliente_cigam extends Model
     {
         return self::where('ativo', 1)
             ->where('cd_empresa', '>', 100000)
-            ->select('nome_completo', 'municipio', 'uf', 'fone')
+            ->select('nome_completo', 'municipio', 'uf', 'fone' , 'cd_empresa')
             ->get();
-
     }
 
 

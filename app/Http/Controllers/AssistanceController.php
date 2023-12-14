@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\cliente;
 use App\Models\Cliente_cigam;
 use App\Models\Pessoa;
 use App\Models\projeto;
@@ -35,7 +34,7 @@ class AssistanceController extends Controller
     }
     public function store(Request $request)
     {
-        $data = $request->only(['tipo_assistencia','status','garantia','quantidade_horas','preco_hora', 'horario_inicio','horario_fim','data_chamado','data_atendimento','descricao','id_cliente','id_pessoas','id_projetos','titulo','percentage']);
+        $data = $request->only(['tipo_assistencia','status','garantia','data_chamado','data_atendimento','descricao','id_cliente','id_projetos','titulo','percentage']);
         assistencia::createAssistance($data);
 
         return redirect(route('assistance.index'));
@@ -44,7 +43,7 @@ class AssistanceController extends Controller
     public function show(string $id)
     {
         $assistencia = assistencia::getById($id);
-        $clientes = Cliente::all();
+        $clientes = Cliente_cigam::all();
         $pessoas = Pessoa::all();;
         $projetos = projeto::all();
 
