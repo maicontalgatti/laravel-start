@@ -32,6 +32,30 @@ $(document).ready(function() {
         atualizarTecnicosNaTela();
     });
 
+    window.gerarCalendario = function(element) {
+    //function gerarCalendario() {
+
+        const tecnicoId = $(element).attr('id').replace('cliente-', '');
+        const tecnico = tecnicosSelecionados.find(t => t.id === tecnicoId);
+
+        const dataInicial = $(element).find('.data-inicial').val();
+        const dataFinal = $(element).find('.data-final').val();
+
+        // Atualizar as datas no objeto tecnicosSelecionados
+        tecnico.dataInicial = dataInicial ? new Date(dataInicial) : null;
+        tecnico.dataFinal = dataFinal ? new Date(dataFinal) : null;
+        const diasDiferenca = calcularDiferencaDias(tecnico.dataInicial, tecnico.dataFinal);
+        const tabela = criarTabela(diasDiferenca,tecnico.dataInicial, tecnico.dataFinal);
+
+        // Use SweetAlert2 para exibir a tabela em um modal
+        Swal.fire({
+            width: '1600px', // Defina o tamanho desejado aqui
+            title: 'Calendário',
+            html: tabela[0].outerHTML, // Obtenha o HTML da tabela
+            showCloseButton: true,
+            showConfirmButton: false,
+        });
+    }
     // Função para atualizar a exibição na tela com base no array tecnicosSelecionados
     function atualizarTecnicosNaTela() {
         // Limpar o conteúdo da div antes de recriar
@@ -41,17 +65,20 @@ $(document).ready(function() {
         tecnicosSelecionados.forEach(function(tecnico) {
             const id = tecnico.id;
             const nome = tecnico.nome;
-            const dataInicial = tecnico.dataInicial ? tecnico.dataInicial.toISOString().split('T')[0] : '';
-            const dataFinal = tecnico.dataFinal ? tecnico.dataFinal.toISOString().split('T')[0] : '';
+            //const dataInicial = tecnico.dataInicial ? tecnico.dataInicial.toISOString().split('T')[0] : '';
+            //const dataFinal = tecnico.dataFinal ? tecnico.dataFinal.toISOString().split('T')[0] : '';
+            const dataInicial = '2023-12-01';//tecnico.dataInicial ? tecnico.dataInicial.toISOString().split('T')[0] : '';
+            const dataFinal = '2023-12-10';//tecnico.dataFinal ? tecnico.dataFinal.toISOString().split('T')[0] : '';
 
             // Criar a div do técnico
             const divTecnico = $("<div class='w-full flex justify-between items-center px-4 mb-4 sm:mb-0 bg-gray-200 dark:bg-gray-700' id='cliente-" + id + "'>" +
-                "<p class='text-3xl text-sm font-medium dark:text-gray-300 text-gray-900'>" + nome + "</p>" +
+                "<p class='text-4xl  font-medium dark:text-gray-300 text-gray-900'>" + nome + "</p>" +
                 "<div class='flex items-center'>" +
-                "<input type='date' class='data-inicial' value='" + dataInicial + "'>" +
+                "<input type='date' class='data-inicial' id='data1-" + id + "' value='" + dataInicial + "'>" +
                 "<span class='mx-2'>-</span>" +
-                "<input type='date' class='data-final' value='" + dataFinal + "'>" +
-                "<input type='button' class='btnTrocaCor' value='Gera calendário' onclick='trocaCor(this.parentNode.parentNode)'>" +
+                "<input type='date' class='data-final' id='data2-" + id + "'value='" + dataFinal + "'>" +
+                //"<input type='button' class='btnTrocaCor' value='Gera calendário' onclick='trocaCor(this.parentNode.parentNode)'>" +
+                "<button type='button' style='padding-left:20px;color:white' onClick='gerarCalendario(this.parentNode.parentNode)'>Gerar Calendário</button>"+
                 "</div></div>");
 
             // Adicionar a div do técnico à div principal
@@ -59,21 +86,19 @@ $(document).ready(function() {
         });
     }
 
-
-
     // Função para calcular a diferença em dias entre duas datas
     function calcularDiferencaDias(dataInicial, dataFinal) {
         if (dataInicial && dataFinal) {
             const diffEmMilissegundos = Math.abs(dataFinal - dataInicial);
             const diffEmDias = Math.ceil(diffEmMilissegundos / (1000 * 60 * 60 * 24));
-            return diffEmDias;
+            return diffEmDias + 1; // Adicione 1 para incluir a última data
         }
         return null;
     }
 
-
 // Função para criar uma tabela com as colunas específicas
-    function criarTabela(diasDiferenca) {
+    function criarTabela(diasDiferenca,dataInicial,dataFinal) {
+        //alert(dataInicial + ' --- ' + dataFinal);
         const tabelaExistente = $('#tabelaTecnicos');
         if (tabelaExistente.length) {
             return tabelaExistente;
@@ -84,14 +109,19 @@ $(document).ready(function() {
 
         const tabela = $('<table>').addClass('w-auto text-center border-collapse border  bg-gray-100 dark:bg-gray-700');
 
-
         // Cabeçalho da tabela
         const cabecalho = $('<thead>');
         const cabecalhoLinha = $('<tr>');
-        const colunas = ['Data', 'Feriado', 'H Início', 'H Fim', 'Total', 'H Início', 'H Fim', 'Total', 'H Início', 'H Fim', 'Total', 'H Totais', 'H Norm', 'H 50%', 'H 100%', 'H Adicionais/Noturnas'];
-
-        colunas.forEach(coluna => {
-            cabecalhoLinha.append($('<th>').text(coluna).addClass('border border-gray-400'));
+        const colunas = [
+            'data', 'feriado', 'h_inicio_m', 'h_fim_m', 'h_total_m', 'h_inicio_t', 'h_fim_t', 'h_total_t',
+            'h_inicio_n', 'h_fim_n', 'h_total_n', 'h_totais', 'h_normais', 'h_50', 'h_100', 'h_noturnas'
+        ];
+        const colunas_cabecalho = [
+            'data', 'feriado', 'H Início M', 'H Fim M', 'Total M', 'H Início T', 'H Fim T', 'Total T',
+            'H Início N', 'H Fim N', 'Total N', 'H Totais', 'H Norm', 'H 50%', 'H 100%', 'H Adicionais/Noturnas'
+        ];
+        colunas_cabecalho.forEach(coluna => {
+            cabecalhoLinha.append($('<th>').text(coluna).addClass('border border-gray-400 text-white'));
         });
 
         cabecalho.append(cabecalhoLinha);
@@ -104,15 +134,37 @@ $(document).ready(function() {
             for (let j = 0; j < colunas.length; j++) {
                 // Preencher a primeira coluna com os dias
                 if (j === 0) {
-                    linha.append($('<td>').text('Dia ' + i).addClass('border border-gray-400'));
+                    //const data = new Date();
+                    const data = new Date(dataInicial);
+                    data.setDate(data.getDate() + i );
+                    const diaMesFormatado = `${data.getDate()}/${data.getMonth() + 1}`;
+
+                    // Adicionar classe para sábado (6) ou domingo (0)
+                    const diaSemana = data.getDay();
+                    const classeDiaSemana = (diaSemana === 0 || diaSemana === 6) ? 'dia-fim-de-semana' : '';
+
+                    linha.append($('<td>').text(diaMesFormatado).addClass(`border border-gray-400 text-white ${classeDiaSemana}`).css('min-width', '60px'));
+
+
                 } else if (j === 1) {
                     // Adicionar select para a coluna 'Feriado'
-                    const selectFeriado = $('<select>').addClass('border border-gray-400 w-full').css('padding', '0');
-                    selectFeriado.append($('<option>').text('Sim').val('sim')).append($('<option>').text('Não').val('nao'));
+                    const selectFeriado = $('<select>')
+                        .addClass('border border-gray-400 w-full')
+                        .css('padding', '0')
+                        .attr('name', `feriado_${i}`)
+                        .css('min-width', '70px');
+                    selectFeriado
+                        .append($('<option>').text('Não').val('nao'))
+                        .append($('<option>').text('Sim').val('sim'));
                     linha.append($('<td>').append(selectFeriado).addClass('border border-gray-400'));
                 } else {
                     // Adicionar input para as demais colunas
-                    const inputHora = $('<input>').addClass('border border-gray-400 w-full').attr('type', 'time').css('padding', '0');
+                    const inputHora = $('<input>')
+                        .addClass('border border-gray-400 w-full')
+                        .attr('type', 'time')
+                        .css('padding', '0')
+                        .attr('name', `${colunas[j].toLowerCase()}_${i}`)
+                        .attr('value', '00:00'); // Definir o valor padrão como '00:00'
                     linha.append($('<td>').append(inputHora).addClass('border border-gray-400'));
                 }
             }
@@ -120,20 +172,88 @@ $(document).ready(function() {
         }
         tabela.append(corpo);
 
-        const botaoSalvar = $('<input>').attr({
-            type: 'button',
-            value: 'Salvar',
-            id: 'btnSalvar'
-        }).addClass('mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded');
+        const botaoSalvar = $('<button>')
+            .attr({
+                type: 'button',
+                id: 'btnSalvar',
+                onclick: 'salvarDados()' // Adicione o evento onclick aqui
+            })
+            .addClass('mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded')
+            .text('Salvar');
 
         // Adicionar evento de clique ao botão "Salvar"
-        botaoSalvar.click(function () {
-            // Lógica de envio dos dados para o servidor
-            console.log('Dados enviados para o servidor.');
-        })
+        window.salvarDados = function () {
+            // Coletar os dados da tabela
+            const dados = [];
+            tabela.find('tbody tr').each(function () {
+                const linha = $(this);
+                const diaElement = linha.find('td:eq(0)').text();
+                const dadosLinha = {
+                    dia: formatarData(diaElement)
+                    //dia: diaElement,
+                };
+                colunas.slice(2).forEach((coluna, index) => {
+                    const inputName = `${coluna.toLowerCase()}_${linha.index() + 1}`;
+                    const valorInput = document.querySelector(`input[name="${inputName}"]`).value;
+                    const feriadoElement = `feriado_${linha.index() + 1}`;
+                    let feriadoVal = document.querySelector(`select[name="${feriadoElement}"]`).value;
+                    if (feriadoVal == 'sim') {
+                        feriadoVal = 1;
+                    }else{
+                        feriadoVal = 0;
+                    }
+
+                    dadosLinha[coluna.toLowerCase()] = valorInput;
+                    dadosLinha['Feriado'] = feriadoVal;
+                });
+                //console.log('Dados da Linha:', dadosLinha);
+                dados.push(dadosLinha);
+            });
+            console.log('Dados enviados :', dados);
+
+            // Enviar dados via AJAX
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                method: 'POST',
+                url: '/ajax/salvarDados',
+                data: {
+                    dados: JSON.stringify(dados),
+                }, // Converta os dados para uma string JSON
+                dataType: 'json', // Indica ao jQuery que a resposta esperada é JSON
+                success: function (response) {
+                    console.log('Dados enviados com sucesso:', response);
+
+                    if (response && response.mensagem) {
+                        console.log('Mensagem do servidor:', response.mensagem);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error('Erro ao enviar dados:', error);
+
+                    // Adicione esta linha para imprimir a resposta completa
+                    console.log('Resposta completa:', xhr.responseText);
+                }
+            });
+        };
+
         container.append(tabela, botaoSalvar); // Adicionar tabela e botão ao contêiner
         return container; // Retornar o contêiner em vez da tabela
+
     }
+    // Função para formatar a data no formato 'Y-m-d'
+    function formatarData(dataString) {
+        const partes = dataString.split('/');
+        const ano = new Date().getFullYear();  // Assumindo que você quer o ano atual
+        const mes = partes[1].padStart(2, '0');  // Preencher com zero à esquerda, se necessário
+        const dia = partes[0].padStart(2, '0');
+        return `${ano}-${mes}-${dia}`;
+    }
+
 
 
     // Função para atualizar datas e calcular a diferença

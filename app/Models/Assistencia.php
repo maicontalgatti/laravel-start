@@ -27,8 +27,16 @@ class assistencia extends Model
     }
     public static function createAssistance($data)
     {
-        return self::create($data);
+        // Crie a assistência
+        $assistencia = static::create($data);
+
+        // Retorne o modelo da assistência
+        return $assistencia;
     }
+    /*public static function createAssistance($data)
+    {
+        return self::create($data);
+    }*/
     public static function updateById($id, $data)
     {
         $registro = self::find($id);
