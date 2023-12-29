@@ -28,5 +28,7 @@ class AssistenciaHoras extends Model
         'h_50',
         'h_100',
         'h_noturnas',
+        'id_tecnico',
+        'id_assistencia',
     ];
 }

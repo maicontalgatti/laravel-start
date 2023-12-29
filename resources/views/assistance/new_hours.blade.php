@@ -2,14 +2,17 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Assistências > Nova ') }}
-        </h2>     <!-- Select2 -->
+
+        </h2>
+
+
     </x-slot>
     <div class="max-w-12xl mx-auto sm:px-6 lg:px-6">
         <section class="py-3">
             <div class="container px-5 mx-auto">
                 <div class="p-8 dark:bg-gray-800 bg-white rounded-xl">
                     <form method="post" action="{{route('assistance.store')}}">
-
+                        <input type="hidden" name="idParam" value="{{ $idParam }}">
                         <!-- DIV 1 INPUT -->
                         <div class="flex flex-wrap items-center -mx-4 pb-8 mb-8 border-b border-gray-400 border-opacity-20">
                             <div class="w-full px-4 mb-4 sm:mb-0">

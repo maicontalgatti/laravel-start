@@ -38,6 +38,7 @@ foreach ($data as $row) {
     $h_totais_50 = $row['h_totais_50'];
     $h_totais_100 = $row['h_totais_100'];
     $anotacao = $row['anotacao'];
+    $id_tecnico = $row['idTecnico'];
 
     // Construir a query de inserção
     $query = "INSERT INTO horas_assistencias (

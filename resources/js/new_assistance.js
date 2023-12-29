@@ -1,17 +1,12 @@
 
-
-
-//adc select2
-/*$(document).ready(function() {
-    $('.js-example-basic-multiple').select2();
-});*/
-
 $(document).ready(function() {
     // Inicializar o Select2
     $('.js-example-basic-multiple').select2();
 
-    // Array para armazenar técnicos selecionados (ID, NOME, DATA_INICIAL, DATA_FINAL)
     let tecnicosSelecionados = [];
+    const idParam = $("input[name='idParam']").val();
+    //console.log(idParam);
+
 
     // Adicionar ou remover pessoas na div ao selecionar/deselecionar na lista
     $('.js-example-basic-multiple').on('change', function() {
@@ -22,7 +17,7 @@ $(document).ready(function() {
         $(this).find(':selected').each(function() {
             const id = $(this).val();
             const nome = $(this).text();
-            tecnicosSelecionados.push({ id: id, nome: nome, dataInicial: null, dataFinal: null });
+            tecnicosSelecionados.push({assistencia: idParam, id: id, nome: nome, dataInicial: null, dataFinal: null });
         });
 
         // Imprimir no console os IDs e NOMES dos técnicos selecionados
@@ -33,19 +28,18 @@ $(document).ready(function() {
     });
 
     window.gerarCalendario = function(element) {
-    //function gerarCalendario() {
 
         const tecnicoId = $(element).attr('id').replace('cliente-', '');
         const tecnico = tecnicosSelecionados.find(t => t.id === tecnicoId);
+        //console.log(tecnico);
 
         const dataInicial = $(element).find('.data-inicial').val();
         const dataFinal = $(element).find('.data-final').val();
 
-        // Atualizar as datas no objeto tecnicosSelecionados
         tecnico.dataInicial = dataInicial ? new Date(dataInicial) : null;
         tecnico.dataFinal = dataFinal ? new Date(dataFinal) : null;
         const diasDiferenca = calcularDiferencaDias(tecnico.dataInicial, tecnico.dataFinal);
-        const tabela = criarTabela(diasDiferenca,tecnico.dataInicial, tecnico.dataFinal);
+        const tabela = criarTabela(diasDiferenca,tecnico.dataInicial, tecnico.dataFinal,tecnico.id, tecnico.nome);
 
         // Use SweetAlert2 para exibir a tabela em um modal
         Swal.fire({
@@ -56,7 +50,7 @@ $(document).ready(function() {
             showConfirmButton: false,
         });
     }
-    // Função para atualizar a exibição na tela com base no array tecnicosSelecionados
+
     function atualizarTecnicosNaTela() {
         // Limpar o conteúdo da div antes de recriar
         $('#abdfeg').empty();
@@ -65,10 +59,8 @@ $(document).ready(function() {
         tecnicosSelecionados.forEach(function(tecnico) {
             const id = tecnico.id;
             const nome = tecnico.nome;
-            //const dataInicial = tecnico.dataInicial ? tecnico.dataInicial.toISOString().split('T')[0] : '';
-            //const dataFinal = tecnico.dataFinal ? tecnico.dataFinal.toISOString().split('T')[0] : '';
-            const dataInicial = '2023-12-01';//tecnico.dataInicial ? tecnico.dataInicial.toISOString().split('T')[0] : '';
-            const dataFinal = '2023-12-10';//tecnico.dataFinal ? tecnico.dataFinal.toISOString().split('T')[0] : '';
+            const dataInicial = '2023-12-01';
+            const dataFinal = '2023-12-10';
 
             // Criar a div do técnico
             const divTecnico = $("<div class='w-full flex justify-between items-center px-4 mb-4 sm:mb-0 bg-gray-200 dark:bg-gray-700' id='cliente-" + id + "'>" +
@@ -77,7 +69,6 @@ $(document).ready(function() {
                 "<input type='date' class='data-inicial' id='data1-" + id + "' value='" + dataInicial + "'>" +
                 "<span class='mx-2'>-</span>" +
                 "<input type='date' class='data-final' id='data2-" + id + "'value='" + dataFinal + "'>" +
-                //"<input type='button' class='btnTrocaCor' value='Gera calendário' onclick='trocaCor(this.parentNode.parentNode)'>" +
                 "<button type='button' style='padding-left:20px;color:white' onClick='gerarCalendario(this.parentNode.parentNode)'>Gerar Calendário</button>"+
                 "</div></div>");
 
@@ -86,7 +77,6 @@ $(document).ready(function() {
         });
     }
 
-    // Função para calcular a diferença em dias entre duas datas
     function calcularDiferencaDias(dataInicial, dataFinal) {
         if (dataInicial && dataFinal) {
             const diffEmMilissegundos = Math.abs(dataFinal - dataInicial);
@@ -96,16 +86,15 @@ $(document).ready(function() {
         return null;
     }
 
-// Função para criar uma tabela com as colunas específicas
-    function criarTabela(diasDiferenca,dataInicial,dataFinal) {
+    function criarTabela(diasDiferenca,dataInicial,dataFinal,idTecnico,nomeTecnico) {
         //alert(dataInicial + ' --- ' + dataFinal);
         const tabelaExistente = $('#tabelaTecnicos');
         if (tabelaExistente.length) {
             return tabelaExistente;
         }
 
-        const container = $('<div>'); // Criar um contêiner para a tabela e o botão
-        container.attr('id', 'tabelaTecnicos'); // Adicionar um ID à tabela para identificação
+        const container = $('<div>');
+        container.attr('id', 'tabelaTecnicos');
 
         const tabela = $('<table>').addClass('w-auto text-center border-collapse border  bg-gray-100 dark:bg-gray-700');
 
@@ -144,7 +133,6 @@ $(document).ready(function() {
                     const classeDiaSemana = (diaSemana === 0 || diaSemana === 6) ? 'dia-fim-de-semana' : '';
 
                     linha.append($('<td>').text(diaMesFormatado).addClass(`border border-gray-400 text-white ${classeDiaSemana}`).css('min-width', '60px'));
-
 
                 } else if (j === 1) {
                     // Adicionar select para a coluna 'Feriado'
@@ -205,6 +193,9 @@ $(document).ready(function() {
 
                     dadosLinha[coluna.toLowerCase()] = valorInput;
                     dadosLinha['Feriado'] = feriadoVal;
+                    dadosLinha['id_tecnico'] = idTecnico;
+                    dadosLinha['id_assistencia'] = idParam;
+
                 });
                 //console.log('Dados da Linha:', dadosLinha);
                 dados.push(dadosLinha);
@@ -217,6 +208,7 @@ $(document).ready(function() {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+            console.log('idTecnico: '+idTecnico);
 
             $.ajax({
                 method: 'POST',
@@ -226,19 +218,29 @@ $(document).ready(function() {
                 }, // Converta os dados para uma string JSON
                 dataType: 'json', // Indica ao jQuery que a resposta esperada é JSON
                 success: function (response) {
-                    console.log('Dados enviados com sucesso:', response);
+                    Swal.fire({
+                        icon: 'success', // Ícone de sucesso
+                        title: 'Horários cadastrados com sucesso!',
+                        text: response.mensagem,
+                    });
 
+                    //console.log('Dados enviados com sucesso:', response);
+                    //alert('Horários cadastrados com sucesso!')
                     if (response && response.mensagem) {
                         console.log('Mensagem do servidor:', response.mensagem);
                     }
                 },
                 error: function (xhr, status, error) {
+                    Swal.fire({
+                        icon: 'error', // Ícone de erro
+                        title: 'Erro ao cadastrar horários',
+                        text: 'Ocorreu um erro ao cadastrar os horários. Por favor, tente novamente mais tarde.',
+                    });
                     console.error('Erro ao enviar dados:', error);
-
-                    // Adicione esta linha para imprimir a resposta completa
                     console.log('Resposta completa:', xhr.responseText);
                 }
             });
+
         };
 
         container.append(tabela, botaoSalvar); // Adicionar tabela e botão ao contêiner
@@ -253,8 +255,6 @@ $(document).ready(function() {
         const dia = partes[0].padStart(2, '0');
         return `${ano}-${mes}-${dia}`;
     }
-
-
 
     // Função para atualizar datas e calcular a diferença
     window.trocaCor = function(element) {
@@ -290,19 +290,6 @@ $(document).ready(function() {
 
 
 
-
-/*
-function trocaCor(element) {
-    // Remover a classe 'texto-vermelho' de todos os elementos
-    $('.w-full p').removeClass('texto-vermelho');
-
-    // Adicionar a classe 'texto-vermelho' apenas ao elemento clicado
-    $(element).find('p').addClass('texto-vermelho');
-}
-*/
-
-
-
 if (document.querySelector('#garantia')) {
 
     //AO ALTERAR UM SELECT, MOSTRAR OU OCULTAR ELEMENTO
@@ -314,8 +301,6 @@ if (document.querySelector('#garantia')) {
         if (select.value === 'sim') {
             input_preco_horas.disabled = true;
             input_preco_horas.style.opacity = '0.5';
-
-
         } else {
             input_preco_horas.disabled = false;
             input_preco_horas.style.opacity = '1';

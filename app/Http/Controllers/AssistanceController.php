@@ -9,6 +9,7 @@ use App\Models\projeto;
 use App\Models\assistencia;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Redirect;
 
 class AssistanceController extends Controller
 {
@@ -34,7 +35,8 @@ class AssistanceController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    //comentar isso
+    /*public function store(Request $request)
     {
         $data = $request->only(['tipo_assistencia','status','garantia','data_chamado','data_atendimento','descricao','id_cliente','id_projetos','titulo','percentage']);
         $assistencia = assistencia::createAssistance($data);
@@ -49,15 +51,36 @@ class AssistanceController extends Controller
             'idParam' => $id,
             'pessoas' => $pessoas
             ]);
+    }*/
+
+
+
+    public function store(Request $request)
+    {
+        // Obtém os dados da requisição
+        $data = $request->only(['tipo_assistencia', 'status', 'garantia', 'data_chamado', 'data_atendimento', 'descricao', 'id_cliente', 'id_projetos', 'titulo', 'percentage']);
+
+        // Cria a assistência e obtém o ID da assistência recém-criada
+        $assistencia = assistencia::createAssistance($data);
+        $id = $assistencia->id;
+
+        // Redireciona para a rota com o ID
+        return Redirect::route('assistance.redirect', ['id' => $id]);
     }
 
-    /* public function store(Request $request)
-   {
-       $data = $request->only(['tipo_assistencia','status','garantia','data_chamado','data_atendimento','descricao','id_cliente','id_projetos','titulo','percentage']);
-       assistencia::createAssistance($data);
+    public function redirectWithId($id)
+    {
+        // Obtém os dados necessários para o redirecionamento (por exemplo, a lista de pessoas)
+        $pessoas = Pessoa::all();
 
-       return redirect(route('assistance.index'));
-   }*/
+        // Redireciona para a próxima tela com os parâmetros necessários
+        return view('assistance.new_hours', [
+            'idParam' => $id,
+            'pessoas' => $pessoas
+        ])->with('success','Assistência criada com sucesso.');
+    }
+
+
 
     public function showIndexHorarios(Request $request){
        // $idParam = $request->input('id');

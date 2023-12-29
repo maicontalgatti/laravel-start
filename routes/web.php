@@ -64,10 +64,12 @@ Route::put('/records/vehicle/edit/{id}', [VehicleController::class, 'update'])->
 Route::get('/assistance', [AssistanceController::class, 'index'])->name('assistance.index');
 Route::get('/assistance/new', [AssistanceController::class, 'new'])->name('assistance.new');
 Route::post('/assistance/store', [AssistanceController::class, 'store'])->name('assistance.store');
+Route::get('/assistance/redirect/{id}', [AssistanceController::class, 'redirectWithId'])->name('assistance.redirect');
 Route::get('/assistance/showIndexHorarios', [AssistanceController::class, 'showIndexHorarios'])->name('assistance.index_horarios');
 Route::get('/assistance/edit/{id}', [AssistanceController::class, 'show'])->name('assistance.edit');
 Route::put('/assistance/save/{id}', [AssistanceController::class, 'update'])->name('assistance.save');
 Route::post('/ajax/salvarDados',[AssistanceController::class, 'salvaAjax'])->name('ajax.salvarDados');
+
 
 Route::get('/test-connection', function () {
     try {
