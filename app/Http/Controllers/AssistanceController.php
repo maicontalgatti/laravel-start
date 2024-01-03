@@ -72,11 +72,13 @@ class AssistanceController extends Controller
     {
         // Obtém os dados necessários para o redirecionamento (por exemplo, a lista de pessoas)
         $pessoas = Pessoa::all();
+        $assistencias_horarios = AssistenciaHoras::all();
 
         // Redireciona para a próxima tela com os parâmetros necessários
         return view('assistance.new_hours', [
             'idParam' => $id,
-            'pessoas' => $pessoas
+            'pessoas' => $pessoas,
+            'assistencias_horarios' => $assistencias_horarios
         ])->with('success','Assistência criada com sucesso.');
     }
 
@@ -123,7 +125,15 @@ class AssistanceController extends Controller
                 AssistenciaHoras::create($linha);
             }
 
-            return response()->json(['mensagem' => 'Dados salvos com sucesso']);
+
+            // Realiza a consulta para obter os dados
+            $assistencias_horarios = AssistenciaHoras::all();
+
+            // Retorna a resposta JSON incluindo os dados da consulta
+            return response()->json([
+                'mensagem' => 'Dados salvos com sucesso',
+                'assistencias_horarios' => $assistencias_horarios,
+            ]);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }

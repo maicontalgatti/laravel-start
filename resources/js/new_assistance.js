@@ -59,8 +59,8 @@ $(document).ready(function() {
         tecnicosSelecionados.forEach(function(tecnico) {
             const id = tecnico.id;
             const nome = tecnico.nome;
-            const dataInicial = '2023-12-01';
-            const dataFinal = '2023-12-10';
+            const dataInicial = '2024-01-01';
+            const dataFinal = '2024-01-10';
 
             // Criar a div do técnico
             const divTecnico = $("<div class='w-full flex justify-between items-center px-4 mb-4 sm:mb-0 bg-gray-200 dark:bg-gray-700' id='cliente-" + id + "'>" +
@@ -122,15 +122,16 @@ $(document).ready(function() {
             const linha = $('<tr>');
             for (let j = 0; j < colunas.length; j++) {
                 // Preencher a primeira coluna com os dias
-                if (j === 0) {
-                    //const data = new Date();
-                    const data = new Date(dataInicial);
-                    data.setDate(data.getDate() + i );
-                    const diaMesFormatado = `${data.getDate()}/${data.getMonth() + 1}`;
+                //const data = new Date();
+                const data = new Date(dataInicial);
+                data.setDate(data.getDate() + i );
+                const diaMesFormatado = `${data.getDate()}/${data.getMonth() + 1}`;
 
-                    // Adicionar classe para sábado (6) ou domingo (0)
-                    const diaSemana = data.getDay();
-                    const classeDiaSemana = (diaSemana === 0 || diaSemana === 6) ? 'dia-fim-de-semana' : '';
+                // Adicionar classe para sábado (6) ou domingo (0)
+                const diaSemana = data.getDay();
+                const classeDiaSemana = (diaSemana === 0 || diaSemana === 6) ? 'dia-fim-de-semana' : '';
+                const feriado = (diaSemana === 0 || diaSemana === 6) ? true : '';
+                if (j === 0) {
 
                     linha.append($('<td>').text(diaMesFormatado).addClass(`border border-gray-400 text-white ${classeDiaSemana}`).css('min-width', '60px'));
 
@@ -141,9 +142,16 @@ $(document).ready(function() {
                         .css('padding', '0')
                         .attr('name', `feriado_${i}`)
                         .css('min-width', '70px');
-                    selectFeriado
-                        .append($('<option>').text('Não').val('nao'))
-                        .append($('<option>').text('Sim').val('sim'));
+
+                    if(feriado === true){
+                        selectFeriado
+                            .append($('<option>').text('Sim').val('sim'))
+                            .append($('<option>').text('Não').val('nao'));
+                    }else {
+                        selectFeriado
+                            .append($('<option>').text('Não').val('nao'))
+                            .append($('<option>').text('Sim').val('sim'));
+                    }
                     linha.append($('<td>').append(selectFeriado).addClass('border border-gray-400'));
                 } else {
                     // Adicionar input para as demais colunas
@@ -228,6 +236,9 @@ $(document).ready(function() {
                     //alert('Horários cadastrados com sucesso!')
                     if (response && response.mensagem) {
                         console.log('Mensagem do servidor:', response.mensagem);
+                        //assistencias_horarios
+                        console.log('assistenciasHorarios');
+                        console.log(assistenciasHorarios);
                     }
                 },
                 error: function (xhr, status, error) {
@@ -286,6 +297,10 @@ $(document).ready(function() {
         const tabela = criarTabela(diasDiferenca);
         $('#horas_quadro').append(tabela);
     };
+
+    //assistencias_horarios
+    console.log('assistenciasHorarios');
+    console.log(assistenciasHorarios);
 });
 
 

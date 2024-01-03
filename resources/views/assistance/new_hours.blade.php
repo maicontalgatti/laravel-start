@@ -6,6 +6,7 @@
         </h2>
 
 
+<!-- assistencias_horarios -->
     </x-slot>
     <div class="max-w-12xl mx-auto sm:px-6 lg:px-6">
         <section class="py-3">
@@ -48,7 +49,9 @@
 
 
                         </style>
-
+                        <script>
+                            var assistenciasHorarios = @json($assistencias_horarios);
+                        </script>
                     </form>
                 </div>
             </div>
