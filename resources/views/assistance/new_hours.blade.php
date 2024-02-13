@@ -51,6 +51,7 @@
                         </style>
                         <script>
                             var assistenciasHorarios = @json($assistencias_horarios);
+                            var tecnicos = @json($tecnicos);
                         </script>
                     </form>
                 </div>

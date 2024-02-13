@@ -1,12 +1,50 @@
+import defaultTheme from "tailwindcss/defaultTheme";
 
 $(document).ready(function() {
     // Inicializar o Select2
     $('.js-example-basic-multiple').select2();
+    $('#id_cliente').select2({
+        //theme:null,
+        theme: 'select2',
+    });
+
 
     let tecnicosSelecionados = [];
     const idParam = $("input[name='idParam']").val();
     //console.log(idParam);
 
+    console.log('COMPORTAMENTO DE RELOAD');
+
+    //assistencias_horarios
+    console.log('assistenciasHorarios (reload):');
+    console.log(assistenciasHorarios);
+
+    console.log('Tecnicos (getTecnicosPorAssistencia):');
+    console.log(tecnicos);
+
+        //colocar tecnicos na tela
+        // Limpar o conteúdo da div antes de recriar
+        $('#abdfeg').empty();
+        // Iterar sobre os técnicos selecionados e adicionar na tela
+            assistenciasHorarios.forEach(function(tecnico) {
+            const id = tecnico.id_tecnico;
+            const nome = tecnico.nome;
+            const dataInicial = '2024-01-01';
+            const dataFinal = '2024-01-10';
+
+            // Criar a div do técnico
+            const divTecnico = $("<div class='w-full flex justify-between items-center px-4 mb-4 sm:mb-0 bg-gray-200 dark:bg-gray-700' id='cliente-" + id + "'>" +
+                "<p class='text-4xl  font-medium dark:text-gray-300 text-gray-900'>" + nome + "</p>" +
+                "<div class='flex items-center'>" +
+                "<input type='date' class='data-inicial' id='data1-" + id + "' value='" + dataInicial + "'>" +
+                "<span class='mx-2'>-</span>" +
+                "<input type='date' class='data-final' id='data2-" + id + "' value='" + dataFinal + "'>" +
+                "<button type='button' style='padding-left:20px;color:white' onClick='gerarCalendario(this.parentNode.parentNode)'>Gerar Calendário</button>"+
+                "</div></div>");
+
+            // Adicionar a div do técnico à div principal
+            $('#abdfeg').append(divTecnico);
+        });
 
     // Adicionar ou remover pessoas na div ao selecionar/deselecionar na lista
     $('.js-example-basic-multiple').on('change', function() {
@@ -87,7 +125,6 @@ $(document).ready(function() {
     }
 
     function criarTabela(diasDiferenca,dataInicial,dataFinal,idTecnico,nomeTecnico) {
-        //alert(dataInicial + ' --- ' + dataFinal);
         const tabelaExistente = $('#tabelaTecnicos');
         if (tabelaExistente.length) {
             return tabelaExistente;
@@ -208,7 +245,7 @@ $(document).ready(function() {
                 //console.log('Dados da Linha:', dadosLinha);
                 dados.push(dadosLinha);
             });
-            console.log('Dados enviados :', dados);
+            //console.log('Dados enviados :', dados);
 
             // Enviar dados via AJAX
             $.ajaxSetup({
@@ -216,11 +253,11 @@ $(document).ready(function() {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            console.log('idTecnico: '+idTecnico);
+            //console.log('idTecnico: '+idTecnico);
 
             $.ajax({
                 method: 'POST',
-                url: '/ajax/salvarDados',
+                url: '/ajax/salvarDados/' + idParam,
                 data: {
                     dados: JSON.stringify(dados),
                 }, // Converta os dados para uma string JSON
@@ -232,13 +269,19 @@ $(document).ready(function() {
                         text: response.mensagem,
                     });
 
-                    //console.log('Dados enviados com sucesso:', response);
-                    //alert('Horários cadastrados com sucesso!')
                     if (response && response.mensagem) {
-                        console.log('Mensagem do servidor:', response.mensagem);
-                        //assistencias_horarios
-                        console.log('assistenciasHorarios');
+                        console.log('COMPORTAMENTO DE AJAX SUCESS');
+                        //console.log('Mensagem do servidor:', response.mensagem);
+                        //console.log(response.dados_horarios);
+
+                        assistenciasHorarios = response.dados_horarios;
+
+                        console.log('assistenciasHorarios atualizado: ');
                         console.log(assistenciasHorarios);
+
+                        console.log('Tecnicos (getTecnicosPorAssistencia):');
+                        console.log(tecnicos);
+
                     }
                 },
                 error: function (xhr, status, error) {
@@ -248,7 +291,7 @@ $(document).ready(function() {
                         text: 'Ocorreu um erro ao cadastrar os horários. Por favor, tente novamente mais tarde.',
                     });
                     console.error('Erro ao enviar dados:', error);
-                    console.log('Resposta completa:', xhr.responseText);
+                    //console.log('Resposta completa:', xhr.responseText);
                 }
             });
 
@@ -283,7 +326,7 @@ $(document).ready(function() {
         const diferencaEmDias = calcularDiferencaDias(tecnico.dataInicial, tecnico.dataFinal);
 
         // Imprimir a diferença em dias no console
-        console.log('Diferença em dias para ' + tecnico.nome + ':', diferencaEmDias);
+        //console.log('Diferença em dias para ' + tecnico.nome + ':', diferencaEmDias);
 
         // Adicionar/remover a classe 'texto-vermelho' para alterar a cor
         $('#abdfeg .w-full').removeClass('texto-vermelho');
@@ -298,9 +341,6 @@ $(document).ready(function() {
         $('#horas_quadro').append(tabela);
     };
 
-    //assistencias_horarios
-    console.log('assistenciasHorarios');
-    console.log(assistenciasHorarios);
 });
 
 

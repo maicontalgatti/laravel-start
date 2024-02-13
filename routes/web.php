@@ -68,7 +68,7 @@ Route::get('/assistance/redirect/{id}', [AssistanceController::class, 'redirectW
 Route::get('/assistance/showIndexHorarios', [AssistanceController::class, 'showIndexHorarios'])->name('assistance.index_horarios');
 Route::get('/assistance/edit/{id}', [AssistanceController::class, 'show'])->name('assistance.edit');
 Route::put('/assistance/save/{id}', [AssistanceController::class, 'update'])->name('assistance.save');
-Route::post('/ajax/salvarDados',[AssistanceController::class, 'salvaAjax'])->name('ajax.salvarDados');
+Route::post('/ajax/salvarDados/{id}',[AssistanceController::class, 'salvaAjax'])->name('ajax.salvarDados');
 
 
 Route::get('/test-connection', function () {

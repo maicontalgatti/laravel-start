@@ -35,26 +35,6 @@ class AssistanceController extends Controller
         ]);
     }
 
-    //comentar isso
-    /*public function store(Request $request)
-    {
-        $data = $request->only(['tipo_assistencia','status','garantia','data_chamado','data_atendimento','descricao','id_cliente','id_projetos','titulo','percentage']);
-        $assistencia = assistencia::createAssistance($data);
-
-        // Obtenha o ID da assistência recém-criada
-        $id = $assistencia->id;
-
-        $pessoas = Pessoa::all();
-        // Redirecione para a rota com o ID
-        //return redirect(route('assistance.index_horarios', ['id' => $id]));
-        return view('assistance.new_hours', [
-            'idParam' => $id,
-            'pessoas' => $pessoas
-            ]);
-    }*/
-
-
-
     public function store(Request $request)
     {
         // Obtém os dados da requisição
@@ -72,17 +52,20 @@ class AssistanceController extends Controller
     {
         // Obtém os dados necessários para o redirecionamento (por exemplo, a lista de pessoas)
         $pessoas = Pessoa::all();
-        $assistencias_horarios = AssistenciaHoras::all();
+
+        //$assistencias_horarios = AssistenciaHoras::all();
+        $assistencias_horarios = AssistenciaHoras::getByCondition('id_assistencia', $id);
+
+        $tecnicos = AssistenciaHoras::getTecnicosPorAssistencia($id);
 
         // Redireciona para a próxima tela com os parâmetros necessários
         return view('assistance.new_hours', [
             'idParam' => $id,
             'pessoas' => $pessoas,
-            'assistencias_horarios' => $assistencias_horarios
+            'assistencias_horarios' => $assistencias_horarios,
+            'tecnicos' => $tecnicos
         ])->with('success','Assistência criada com sucesso.');
     }
-
-
 
     public function showIndexHorarios(Request $request){
        // $idParam = $request->input('id');
@@ -115,7 +98,7 @@ class AssistanceController extends Controller
         $assistencia->update($data);
         return redirect(route('assistance.index'));
     }
-    public function salvaAjax(Request $request)
+    public function salvaAjax(Request $request, $idAssistencia)
     {
         try {
             $dados = json_decode($request->input('dados'), true);
@@ -125,14 +108,17 @@ class AssistanceController extends Controller
                 AssistenciaHoras::create($linha);
             }
 
+            // Realiza a consulta para obter os dados
+            $dados_horarios = AssistenciaHoras::getByCondition('id_assistencia', $idAssistencia);
 
             // Realiza a consulta para obter os dados
-            $assistencias_horarios = AssistenciaHoras::all();
+            $tecnicos = AssistenciaHoras::getTecnicosPorAssistencia($idAssistencia);
 
             // Retorna a resposta JSON incluindo os dados da consulta
             return response()->json([
                 'mensagem' => 'Dados salvos com sucesso',
-                'assistencias_horarios' => $assistencias_horarios,
+                'dados_horarios' => $dados_horarios,
+                'tecnicos' => $tecnicos,
             ]);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);

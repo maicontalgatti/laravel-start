@@ -19,7 +19,8 @@
                             <div class="w-full sm:w-auto px-4">
                                 <div>
                                     <button type="submit">
-                                        <a class="inline-block py-2 px-4 text-xs text-center font-semibold leading-normal text-blue-50 bg-blue-500 hover:bg-blue-600 rounded-lg transition duration-200" >Adicionar horários</a></div>
+                                        <a class="inline-block py-2 px-4 text-xs text-center font-semibold leading-normal text-blue-50 bg-blue-500 hover:bg-blue-600 rounded-lg transition duration-200" >Adicionar horários</a>
+                                    </div>
                                 </button>
                             </div>
                         </div>
@@ -48,14 +49,17 @@
                                 </select>
                             </div>
                             <div class="w-full sm:w-1/4 px-4 mb-4 sm:mb-0">
-                                <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Cliente</span>
+                                <span class="text-sm font-medium dark:text-gray-300 text-gray-900" >Cliente</span>
                                 <select name="id_cliente" id="id_cliente" class=" block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
                                     <option class=" text-black" value=""></option>
                                     @foreach($clientes as $cliente)
-                                        <option class=" text-black" value="{{$cliente->cd_empresa}}">{{$cliente->nome_completo}}</option>
+                                        <option class=" text-black" value="{{$cliente->cd_empresa}}">{{$cliente->nome_completo}} -{{$cliente->CNPJ_CPF}} </option>
                                     @endforeach
                                 </select>
-                                <!--</select>-->
+                                <!--<select name="id_cliente" id="id_cliente" class=" block py-4 px-3 w-full text-sm dark:text-gray-300 text-black placeholder-gray-600 font-medium outline-none bg-transparent border border-gray-400 hover:border-black dark:hover:border-white focus:border-green-500 rounded-lg">
+                                        <option class=" text-black" value=""></option>
+                                        <option class=" text-black" value=""> option>
+                                    </select>-->
                             </div>
                             <div class="w-full sm:w-1/4 px-4 mb-4 sm:mb-0">
                                 <span class="text-sm font-medium dark:text-gray-300 text-gray-900">Status</span>
@@ -115,7 +119,16 @@
                             .texto-vermelho{
                                 color: red;
                             }
-
+                            .select2{
+                                font-size: 0.875rem;
+                                line-height: 1.25rem;
+                                border: rgb(156 163 175) solid 1px;
+                                height: 54.4922px;
+                                border-radius: 0.5rem;
+                                color: rgb(209, 213, 219);
+                                padding-top: 15px;
+                                padding-bottom: 15px;
+                            }
                         </style>
 
                     </form>
