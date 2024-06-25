@@ -20,7 +20,6 @@ class AssistanceController extends Controller
           return view('assistance.index', [
                'assistencias' => $assistencias,
            ]);
-
     }
 
     public function new():View
@@ -39,6 +38,13 @@ class AssistanceController extends Controller
     {
         // Obtém os dados da requisição
         $data = $request->only(['tipo_assistencia', 'status', 'garantia', 'data_chamado', 'data_atendimento', 'descricao', 'id_cliente', 'id_projetos', 'titulo', 'percentage']);
+
+        // Adiciona o valor estático para 'horario_inicio'
+        $data['horario_inicio'] = '00:00';
+        // Adiciona o valor estático para 'horario_fim'
+        $data['horario_fim'] = '00:00';
+        // Adiciona o valor estático para 'horario_fim'
+        $data['horario_fim'] = '00:00';
 
         // Cria a assistência e obtém o ID da assistência recém-criada
         $assistencia = assistencia::createAssistance($data);
@@ -79,7 +85,7 @@ class AssistanceController extends Controller
     {
         $assistencia = assistencia::getById($id);
         $clientes = Cliente_cigam::all();
-        $pessoas = Pessoa::all();;
+        $pessoas = Pessoa::all();
         $projetos = projeto::all();
 
         //return view('records.people');

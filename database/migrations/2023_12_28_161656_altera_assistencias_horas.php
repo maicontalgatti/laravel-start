@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+
         Schema::table('horas_assistencias', function (Blueprint $table) {
             $table->renameColumn('h_inicial_manha', 'h_inicio_m');
             $table->renameColumn('h_final_manha', 'h_fim_m');

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
 
-        Schema::connection('mysql')->create('horas_assistencias', function (Blueprint $table) {
+        Schema::create('mysql')->create('horas_assistencias', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_assistencia');
             $table->integer('id_tecnico');

@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('descricao', 200);
             $table->integer('id_cliente');
             $table->integer('id_pessoas');
-            $table->integer('id_projetops');
+            $table->integer('id_projeto');
         });
     }
 

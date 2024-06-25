@@ -70,7 +70,6 @@ Route::get('/assistance/edit/{id}', [AssistanceController::class, 'show'])->name
 Route::put('/assistance/save/{id}', [AssistanceController::class, 'update'])->name('assistance.save');
 Route::post('/ajax/salvarDados/{id}',[AssistanceController::class, 'salvaAjax'])->name('ajax.salvarDados');
 
-
 Route::get('/test-connection', function () {
     try {
         DB::connection('oracle')->getPdo();
@@ -79,7 +78,6 @@ Route::get('/test-connection', function () {
         echo "Erro na conexão Oracle: " . $e->getMessage();
     }
 });
-
 
 Route::get('/dashboard', function () {
     return view('dashboard');

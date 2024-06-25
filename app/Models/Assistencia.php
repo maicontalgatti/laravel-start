@@ -11,7 +11,7 @@ class assistencia extends Model
     protected $connection = 'mysql';
 
     // Colunas da tabela
-    protected $fillable = ['tipo_assistencia','status','garantia','data_chamado','data_atendimento','descricao','id_cliente','id_projetos','titulo','percentage'];
+    protected $fillable = ['tipo_assistencia','status','garantia','data_chamado','data_atendimento','descricao','id_cliente','id_projetos','titulo','percentage','horario_inicio','horario_fim'];
     public static function getAll()
     {
         return self::all();
@@ -27,6 +27,7 @@ class assistencia extends Model
     }
     public static function createAssistance($data)
     {
+
         // Crie a assistência
         $assistencia = static::create($data);
 
